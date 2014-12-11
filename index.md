@@ -2,7 +2,7 @@
 layout: minimal
 ---
 
-### Why
+### What It Is
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ex dolor, lacinia vel elementum rhoncus, blandit nec nunc. Nunc in ultrices ex, quis laoreet dui. Donec condimentum purus in dui sagittis, at facilisis ipsum pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum congue tempus. Praesent tempus at ex et vestibulum. Integer lacinia sed ipsum eget volutpat. Proin eu nisl nec erat porta consectetur in eget ex.
 
