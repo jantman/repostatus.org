@@ -11,8 +11,22 @@ update_files = [
     ('LICENSE.txt', 'blam/blarg/hsof/lic.t'),
 ]
 
+def _get_branch():
+    """ get the current git branch """
+    br = local("git symbolic-ref -q HEAD").replace('refs/heads/', '', 1)
+    return br
+
+def _require_branch(b_req):
+    branch = _get_branch()
+    if branch != b_req:
+        print("ERROR: command can only be run on branch {b_req}, not {b}".format(b_req=b_req, b=branch))
+        raise SystemExit(1)
+
 def update():
     """ Update files pulled in from master branch """
+    _require_branch('gh-pages')
+    # TODO: need to figure out how to recursively copy
+    # TODO: if fabfiles are different, update from master and exit with message
     for f in update_files:
         _update_file('master', f[0], f[1])
     # version-specific stuff
@@ -58,6 +72,7 @@ def _download_media(url, fname):
 
 def make_badges():
     """ Regenerate the badges. Once run, copy them into badges/x.y.x/ """
+    _require_branch('gh-pages')
     badges = {
         'concept': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
         'wip': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
