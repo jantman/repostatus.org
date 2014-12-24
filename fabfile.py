@@ -25,6 +25,7 @@ def _require_branch(b_req):
 def update():
     """ Update files pulled in from master branch """
     _require_branch('gh-pages')
+    _check_fabfile_update()
     # TODO: need to figure out how to recursively copy
     # TODO: if fabfiles are different, update from master and exit with message
     for f in update_files:
@@ -42,7 +43,18 @@ def _get_tags():
         if tag_re.match(t):
             tags.append(t)
     return tags
-        
+
+def _check_fabfile_update():
+    """ check for an updated fabfile, update if there is one """
+    _update_file('master', 'fabfile.py', 'fabfile.py.master')
+    with settings(warn_only=True):
+        res = local('diff fabfile.py fabfile.py.master')
+    if res.failed:
+        print("fabfile.py differs from master, updating")
+        os.rename('fabfile.py.master', 'fabfile.py')
+        raise SystemExit("fabfile.py updated from master, exiting. Please re-run command")
+    os.remove('fabfile.py.master')
+
 def _update_file(src_treeish, src_path, dst_path):
     """ update a single file from another branch into this one """
     _check_dirs(dst_path)
