@@ -7,7 +7,6 @@ import requests
 import json
 
 translate_files = [
-    ('README.md', 'README.md'),
     ('LICENSE.txt', 'LICENSE.txt'),
 ]
 
