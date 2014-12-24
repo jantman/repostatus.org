@@ -6,9 +6,13 @@ import datetime
 import requests
 import json
 
-update_files = [
-    ('README.md', 'bar'),
-    ('LICENSE.txt', 'blam/blarg/hsof/lic.t'),
+translate_files = [
+    ('README.md', 'README.md'),
+    ('LICENSE.txt', 'LICENSE.txt'),
+]
+
+checkout_paths = [
+    'badges',
 ]
 
 def _get_branch():
@@ -28,11 +32,12 @@ def update():
     _check_fabfile_update()
     # TODO: need to figure out how to recursively copy
     # TODO: if fabfiles are different, update from master and exit with message
-    for f in update_files:
+    for f in translate_files:
         _update_file('master', f[0], f[1])
+    for p in checkout_paths:
+        local("git checkout master -- {p}".format(p=p))
     # version-specific stuff
-    tags = _get_tags()
-    raise SystemExit("do version-specific stuff")
+    #tags = _get_tags()
 
 def _get_tags():
     """ get a list of all git tags """
