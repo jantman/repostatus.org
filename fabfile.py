@@ -17,7 +17,7 @@ checkout_paths = [
 
 def _get_branch():
     """ get the current git branch """
-    br = local("git symbolic-ref -q HEAD").replace('refs/heads/', '', 1)
+    br = local("git symbolic-ref -q HEAD", capture=True).replace('refs/heads/', '', 1)
     return br
 
 def _require_branch(b_req):
@@ -30,14 +30,10 @@ def update():
     """ Update files pulled in from master branch """
     _require_branch('gh-pages')
     _check_fabfile_update()
-    # TODO: need to figure out how to recursively copy
-    # TODO: if fabfiles are different, update from master and exit with message
     for f in translate_files:
         _update_file('master', f[0], f[1])
     for p in checkout_paths:
         local("git checkout master -- {p}".format(p=p))
-    # version-specific stuff
-    #tags = _get_tags()
 
 def _get_tags():
     """ get a list of all git tags """
