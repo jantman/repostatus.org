@@ -84,7 +84,7 @@ def _download_media(url, fname):
 
 def make_badges():
     """ Regenerate the badges. Once run, copy them into badges/x.y.x/ """
-    _require_branch('gh-pages')
+    _require_branch('master')
     badges = {
         'concept': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
         'wip': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
@@ -96,4 +96,3 @@ def make_badges():
     }
     for name in badges:
         _download_media(badges[name], '{n}.svg'.format(n=name))
-
