@@ -96,15 +96,15 @@ def _make_badge_markup(badge_name, description, url, savedir):
     """ generate example markup for a badge, write to disk under savedir """
     alt = "Project Status: {statuscap} - {desc}".format(desc=description, statuscap=badge_name.capitalize())
     target = "http://www.repostatus.org/#{status}".format(status=badge_name)
-    with open(os.path.join(savedir, '{n}.md'.format(n=badge_name)), 'w') as fh:
+    with open(os.path.join(savedir, '{n}_md.txt'.format(n=badge_name)), 'w') as fh:
         fh.write("[![{alt}]({url})]({target})\n".format(target=target,
                                                         url=url,
                                                         alt=alt))
-    with open(os.path.join(savedir, '{n}.html'.format(n=badge_name)), 'w') as fh:
+    with open(os.path.join(savedir, '{n}_html.txt'.format(n=badge_name)), 'w') as fh:
         fh.write('<a href="{target}"><img src="{url}" alt="{alt}" /></a>\n'.format(url=url,
                                                                                    target=target,
                                                                                    alt=alt))
-    with open(os.path.join(savedir, '{n}.rst'.format(n=badge_name)), 'w') as fh:
+    with open(os.path.join(savedir, '{n}_rst.txt'.format(n=badge_name)), 'w') as fh:
         fh.write('.. image:: {url}\n   :alt: {alt}\n   :target: {target}\n'.format(url=url,
                                                                                    target=target,
                                                                                    alt=alt))
