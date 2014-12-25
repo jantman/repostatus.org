@@ -10,6 +10,25 @@ NOTE: This script works with Python 2.7 or newer.
 Example Usage
 =============
 
+On a single directory, containing a README.md file with the identifier string present in it:
+
+    $ repostatusorg_list_repo_status.py -p ~/GIT/repostatus.org/
+    /home/jantman/GIT/repostatus.org/: active
+
+In pwd, containing a README.md file with the identifier string present:
+
+    $ repostatusorg_list_repo_status.py
+    ./: active
+
+On a directory containing multiple git clones, some of which have the identifier present:
+
+    $ parsers/repostatusorg_list_repo_status.py -p ~/GIT
+    /home/jantman/GIT/php-nagios-xml: unsupported
+    /home/jantman/GIT/ec2machines: active
+    /home/jantman/GIT/nodejs-rpm-centos5: inactive
+    /home/jantman/GIT/updatewatcher: concept
+    /home/jantman/GIT/repostatus.org: active
+    /home/jantman/GIT/TuxTruck-wxPython: abandoned
 
 =========
 Copyright
