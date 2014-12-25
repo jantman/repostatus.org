@@ -22,7 +22,7 @@ def get_repostatusorg_for_url(url):
     r = requests.get(url)
     if r.status_code != 200:
         raise SystemExit("ERROR: Got HTTP status code {c} for url: {u}".format(c=r.status_code, u=url))
-    m = re.search(r'http[s]?:\/\/.*repostatus\.org\/badges\/(.+)\/(.+)\.svg', r.text)
+    m = re.search(r'http[s]?:\/\/.*repostatus\.org\/badges\/(.+)\/(.+)\.svg', r.text, flags=re.I)
     if m is None:
         # no match found
         return None
