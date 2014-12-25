@@ -61,3 +61,7 @@ The repostatus.org badge URL is the authoritative identifier of status. Regardle
 Machine parsing is quite simple: first, search through any files in the top-level directory of the project (ideally on the default branch, usually master for git) matching ``/^readme.*$/i`` (note the case-insensitivity) in lexicographic order. The first one with a match for the identifier string (URL) wins, and the first complete match within the file wins. If no files match, then search for a ``.repostatus.org`` file, and if none is found, a ``repostatus.org`` file. Machine parsing _should_ follow the full specification rather than assuming file names (or assuming that a project's readme will be correctly displayed on GitHub).
 
 There are some example parsers listed on the [parsers](/parsers/) page.
+
+### Contributing
+
+This is a crazy idea of mine. But I think it's useful. I'm very open to comments, criticisms, suggestions, etc. Feel free to open an [issue on GitHub](https://github.com/jantman/repostatus.org/issues) or submit a pull request.
