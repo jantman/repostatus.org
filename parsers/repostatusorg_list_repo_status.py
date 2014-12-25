@@ -96,9 +96,11 @@ class RepoStatusOrg_Checker:
         for d in os.listdir(path):
             dpath = os.path.join(path, d)
             if not os.path.isdir(dpath) or d == '.' or d == '..':
+                self.logger.debug("skipping non-directory or system directory: {dpath}".format(dpath=dpath))
                 continue
             candidates = self._find_candidate_files(dpath)
             if len(candidates) < 1:
+                self.logger.debug("found 0 candidates in directory: {dpath}".format(dpath=dpath))
                 continue
             self.logger.debug("Found candidate files in subdirectory: {d}".format(d=dpath))
             res[dpath] = self._find_status_for_files(candidates)
@@ -133,7 +135,7 @@ class RepoStatusOrg_Checker:
         files = os.listdir(path)
         # sort files lexicographically
         for fname in sorted(files, lambda x,y: cmp(x.lower(), y.lower()) or cmp(x,y)):
-            if self.readme_re.match(fname) and os.path.isfile(fname):
+            if self.readme_re.match(fname) and os.path.isfile(os.path.join(path, fname)):
                 candidates.append(os.path.join(path, fname))
         for fname in [os.path.join(path, '.repostatus.org'), os.path.join(path, 'repostatus.org')]:
             if os.path.exists(fname) and os.path.isfile(fname):
@@ -148,8 +150,8 @@ def parse_args(argv):
     p = argparse.ArgumentParser(description='Sample python script skeleton.')
     p.add_argument('-v', '--verbose', dest='verbose', action='store_true', default=False,
                    help='verbose output (internal debugging).')
-    p.add_argument('-p', '--path', dest='path', type=str, default='./',
-                   help='path to a project or directory of projects to check; default: "./"')
+    p.add_argument('-p', '--path', dest='path', type=str, default=os.getcwd(),
+                   help='path to a project or directory of projects to check; default is cwd')
     args = p.parse_args(argv)
     return args
 
