@@ -14,6 +14,16 @@ checkout_paths = [
     'badges',
 ]
 
+badge_descriptions = {
+    "concept": "Minimal or no implementation has been done yet.",
+    "wip": "Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.",
+    "suspended": "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.",
+    "abandoned": "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.",
+    "active": "The project has reached a stable, usable state and is being actively developed.",
+    "inactive": "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.",
+    "unsupported": "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
+}
+
 def _get_branch():
     """ get the current git branch """
     br = local("git symbolic-ref -q HEAD", capture=True).replace('refs/heads/', '', 1)
@@ -82,10 +92,28 @@ def _download_media(url, fname):
             fh.write(chunk)
         fh.flush()
 
+def _make_badge_markup(badge_name, description, url, savedir):
+    """ generate example markup for a badge, write to disk under savedir """
+    alt = "Project Status: {statuscap} - {desc}".format(desc=description, statuscap=badge_name.capitalize())
+    target = "http://www.repostatus.org/#{status}".format(status=badge_name)
+    with open(os.path.join(savedir, '{n}.md'.format(n=badge_name)), 'w') as fh:
+        fh.write("[![{alt}]({url})]({target})\n".format(target=target,
+                                                        url=url,
+                                                        alt=alt))
+    with open(os.path.join(savedir, '{n}.html'.format(n=badge_name)), 'w') as fh:
+        fh.write('<a href="{target}"><img src="{url}" alt="{alt}" /></a>\n'.format(url=url,
+                                                                                   target=target,
+                                                                                   alt=alt))
+    with open(os.path.join(savedir, '{n}.rst'.format(n=badge_name)), 'w') as fh:
+        fh.write('.. image:: {url}\n   :alt: {alt}\n   :target: {target}\n'.format(url=url,
+                                                                                   target=target,
+                                                                                   alt=alt))
+        
 def make_badges():
     """ Regenerate the badges. Once run, copy them into badges/x.y.x/ """
     _require_branch('master')
-    badges = {
+    version = '0.1.0'
+    badge_sources = {
         'concept': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
         'wip': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
         'suspended': 'http://img.shields.io/badge/repo%20status-Suspended-orange.svg',
@@ -94,5 +122,15 @@ def make_badges():
         'inactive': 'http://img.shields.io/badge/repo%20status-Inactive-yellowgreen.svg',
         'unsupported': 'http://img.shields.io/badge/repo%20status-Unsupported-lightgrey.svg',
     }
-    for name in badges:
-        _download_media(badges[name], '{n}.svg'.format(n=name))
+    if not os.path.exists('badges/generated'):
+        os.makedirs('badges/generated')
+    badge_data = {}
+    for name in badge_descriptions:
+        badge_data[name] = {'description': badge_descriptions[name], 'url': 'http://www.repostatus.org/badges/{ver}/{name}.svg'.format(ver=version, name=name)}
+    with open('badges/generated/badges.json', 'w') as fh:
+        fh.write(json.dumps(badge_data, indent=2, sort_keys=True))
+    print("badge info written to badges/generated/badges.json")
+    for name in badge_sources:
+        _download_media(badge_sources[name], 'badges/generated/{n}.svg'.format(n=name))
+        _make_badge_markup(name, badge_descriptions[name], badge_data[name]['url'], 'badges/generated')
+    print("badge images and markup written to badges/generated")
