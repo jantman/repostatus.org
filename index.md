@@ -46,6 +46,8 @@ Below are the various status icons, along with paste-able markup to add them in 
 * __Inactive__ [![Project Status: Inactive - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/0.1.0/inactive.svg)](http://www.repostatus.org/#inactive)
 * __Unsupported__ [![Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](http://www.repostatus.org/badges/0.1.0/unsupported.svg)](http://www.repostatus.org/#unsupported)
 
+<div id="samplecode"></div>
+
 #### Machine-Readable Only
 
 If for some reason you don't want people to see the repostatus.org status identifier (which defeats half the purpose of this idea, but may be valid for some people), you can place just the URL to the status image in a ``.repostatus.org`` or ``repostatus.org`` file in the top-level of your project. Per the specification, programs that determine project status check these files _after_ the README file(s).
