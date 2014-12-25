@@ -12,17 +12,19 @@ This is accomplished by including a simple badge or URL in your project's README
 
 * <a name="concept"></a> __Concept__ - Minimal or no implementation has been done yet.
 * <a name="wip"></a> __WIP__ - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
-* <a name="suspended"></a> __Suspended__ - A WIP project that has had work stopped for the time being; the author(s) intend on resuming work.
-* <a name="abandoned"></a> __Abandoned__ - A WIP project that has been abandoned; the author(s) do not intend on continuing development.
+* <a name="suspended"></a> __Suspended__ - Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.
+* <a name="abandoned"></a> __Abandoned__ - Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.
 * <a name="active"></a> __Active__ - The project has reached a stable, usable state and is being actively developed.
 * <a name="inactive"></a> __Inactive__ - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.
 * <a name="unsupported"></a> __Unsupported__ - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.
+
+These status descriptions and the URLs to the corresponding icons are also available in a [JSON file](/badges/0.1.0/badges.json).
 
 ### What It Looks Like
 
 When using the recommended method (a badge embedded in your project's README file), it's as concise as this one image:
 
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://repostatus.org/badges/0.1.0/active.svg)](http://repostatus.org/#active)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
 
 This incorporates three components:
 
@@ -36,13 +38,13 @@ Setting up your project to use RepoStatus.org is as simple as adding the appropr
 
 Below are the various status icons, along with paste-able markup to add them in a variety of markup languages. Feel free to alter the alt-text (after the first ``-``) to suit your needs.
 
-* __Concept__ 
-* __WIP__ 
-* __Suspended__ 
-* __Abandoned__ 
-* __Active__ 
-* __Inactive__ 
-* __Unsupported__ 
+* __Concept__ [![Project Status: Concept - Minimal or no implementation has been done yet.](http://www.repostatus.org/badges/0.1.0/concept.svg)](http://www.repostatus.org/#concept)
+* __WIP__ [![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/0.1.0/wip.svg)](http://www.repostatus.org/#wip)
+* __Suspended__ [![Project Status: Suspended - Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.](http://www.repostatus.org/badges/0.1.0/suspended.svg)](http://www.repostatus.org/#suspended)
+* __Abandoned__ [![Project Status: Abandoned - Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](http://www.repostatus.org/badges/0.1.0/abandoned.svg)](http://www.repostatus.org/#abandoned)
+* __Active_ __ [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
+* __Inactive__ [![Project Status: Inactive - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/0.1.0/inactive.svg)](http://www.repostatus.org/#inactive)
+* __Unsupported__ [![Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](http://www.repostatus.org/badges/0.1.0/unsupported.svg)](http://www.repostatus.org/#unsupported)
 
 #### Machine-Readable Only
 
@@ -60,7 +62,7 @@ The repostatus.org badge URL is the authoritative identifier of status. Regardle
 
 Machine parsing is quite simple: first, search through any files in the top-level directory of the project (ideally on the default branch, usually master for git) matching ``/^readme.*$/i`` (note the case-insensitivity) in lexicographic order. The first one with a match for the identifier string (URL) wins, and the first complete match within the file wins. If no files match, then search for a ``.repostatus.org`` file, and if none is found, a ``repostatus.org`` file. Machine parsing _should_ follow the full specification rather than assuming file names (or assuming that a project's readme will be correctly displayed on GitHub).
 
-There are some example parsers listed on the [parsers](/parsers/) page.
+There are some example parsers listed on the [parsers](/parsers) page.
 
 ### Contributing
 
