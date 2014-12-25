@@ -7,10 +7,56 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/samplecode.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="application/javascript">
+      var badge_data;
+
+      $.getJSON('badges/0.1.0/badges.json', function(json){ badge_data = json; });
+      
+      function showsample(badgename, markup) {
+      output = '';
+      outtype = '';
+      if ( markup == "md" ) {
+        output = make_md(badgename, badge_data[badgename]['url'], badge_data[badgename]['description']);
+        outtype = "Markdown";
+      } else if ( markup == "rst" ) {
+        output = make_rst(badgename, badge_data[badgename]['url'], badge_data[badgename]['description']);
+        outtype = "ReST";
+      } else if ( markup == "html") {
+        output = make_html(badgename, badge_data[badgename]['url'], badge_data[badgename]['description']);
+        outtype = "HTML";
+      }
+      $("#samplecode").html(output);
+      $("#sampletitle").html(outtype + " for " + capitalizeFirstLetter(badgename) + " Status (<a href=\"http://www.repostatus.org/badges/0.1.0/" + badgename + "." + markup + "\">direct link</a>)");
+      $("#samplewrapper").show();
+      }
+
+      function make_md(badgename, url, desc) {
+        return "<code>" + htmlEncode("[![Project Status: " + capitalizeFirstLetter(badgename) + " - " + desc + "](" + url + ")](http://www.repostatus.org/#" + badgename + ")") + "</code>";
+      }
+
+      function make_rst(badgename, url, desc) {
+        return "<code>" + htmlEncode(".. image:: " + url) + "</code><br />&nbsp;&nbsp;&nbsp;<code>" + htmlEncode(":alt: Project Status: " + capitalizeFirstLetter(badgename) + " - " + desc) + "</code><br />&nbsp;&nbsp;&nbsp;<code>" + htmlEncode(":target: http://www.repostatus.org/#" + badgename) + "</code>";
+      }
+
+      function make_html(badgename, url, desc) {
+        return "<code>" + htmlEncode("<a href=\"http://www.repostatus.org/#" + badgename + "\"><img src=\"" + url + "\" alt=\"Project Status: " + capitalizeFirstLetter(badgename) + " - " + desc + "\" \></a>") + "</code>";
+      }
+      
+      function capitalizeFirstLetter(string)
+      {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+
+      function htmlEncode(value) {
+        return $('<div/>').text(value).html();
+      }
+    </script>
   </head>
   <body>
     <div class="wrapper">
