@@ -1,0 +1,17 @@
+div#samplecode {
+    padding: 1em;
+}
+
+div#samplewrapper h5 {
+    text-align: center;
+}
+
+div#samplewrapper {
+    border: 1px solid black !important;
+    margin-bottom: 1em;
+}
+
+div#samplecode pre {
+    background: #F8F8F8 !important;
+    overflow-x: initial;
+}
