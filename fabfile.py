@@ -108,7 +108,7 @@ def _make_badge_markup(badge_name, description, url, savedir):
         fh.write('.. image:: {url}\n   :alt: {alt}\n   :target: {target}\n'.format(url=url,
                                                                                    target=target,
                                                                                    alt=alt))
-        
+
 def make_badges():
     """ Regenerate the badges. Once run, copy them into badges/x.y.x/ """
     _require_branch('master')
@@ -134,3 +134,11 @@ def make_badges():
         _download_media(badge_sources[name], 'badges/generated/{n}.svg'.format(n=name))
         _make_badge_markup(name, badge_descriptions[name], badge_data[name]['url'], 'badges/generated')
     print("badge images and markup written to badges/generated")
+
+def publish():
+    """Regenerate and publish to GitHub Pages"""
+    resp = prompt("This will clean, build, and push to GH pages (destroying the current gh-pages branch). Ok? [yes|No]")
+    if not re.match(r'(y|Y|yes|Yes|YES)', resp):
+        return False
+    local("ghp-import gh_pages")
+    local("git push origin gh-pages")
