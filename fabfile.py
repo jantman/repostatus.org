@@ -1,18 +1,21 @@
-from fabric.api import *
+"""
+Repostatus.org fabfile - this is used to build badges and push to GitHub Pages.
+
+Requires Python (only tested with 2.7), Fabric and ghp-import.
+
+requirements (and tested versions):
+
+Fabric==1.8.1
+ghp-import==0.4.0
+requests==2.7.0
+
+"""
+
+from fabric.api import local
 import os
-import re
-import sys
-import datetime
 import requests
 import json
-
-translate_files = [
-    ('LICENSE.txt', 'LICENSE.txt'),
-]
-
-checkout_paths = [
-    'badges',
-]
+import shutil
 
 badge_descriptions = {
     "concept": "Minimal or no implementation has been done yet.",
@@ -23,62 +26,6 @@ badge_descriptions = {
     "inactive": "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.",
     "unsupported": "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
 }
-
-def _get_branch():
-    """ get the current git branch """
-    br = local("git symbolic-ref -q HEAD", capture=True).replace('refs/heads/', '', 1)
-    return br
-
-def _require_branch(b_req):
-    branch = _get_branch()
-    if branch != b_req:
-        print("ERROR: command can only be run on branch {b_req}, not {b}".format(b_req=b_req, b=branch))
-        raise SystemExit(1)
-
-def update():
-    """ Update files pulled in from master branch """
-    _require_branch('gh-pages')
-    _check_fabfile_update()
-    for f in translate_files:
-        _update_file('master', f[0], f[1])
-    for p in checkout_paths:
-        local("git checkout master -- {p}".format(p=p))
-
-def _get_tags():
-    """ get a list of all git tags """
-    raw = local("git tag", capture=True).strip().split("\n")
-    tags = []
-    tag_re = re.compile(r'^\d+\.\d+(\.\d+)?$')
-    for t in raw:
-        if tag_re.match(t):
-            tags.append(t)
-    return tags
-
-def _check_fabfile_update():
-    """ check for an updated fabfile, update if there is one """
-    _update_file('master', 'fabfile.py', 'fabfile.py.master')
-    with settings(warn_only=True):
-        res = local('diff fabfile.py fabfile.py.master')
-    if res.failed:
-        print("fabfile.py differs from master, updating")
-        os.rename('fabfile.py.master', 'fabfile.py')
-        raise SystemExit("fabfile.py updated from master, exiting. Please re-run command")
-    os.remove('fabfile.py.master')
-
-def _update_file(src_treeish, src_path, dst_path):
-    """ update a single file from another branch into this one """
-    _check_dirs(dst_path)
-    local("git show {t}:{s} > {d}".format(t=src_treeish, s=src_path, d=dst_path))
-
-def _check_dirs(fname):
-    """ get parent directories to a file; create them under pwd if they don't exist """
-    d = os.path.dirname(fname)
-    if d == '':
-        return
-    if os.path.exists(d) and not os.path.isdir(d):
-        raise SystemExit("ERROR: path {d} exists but is not a directory.".format(d=d))
-    if not os.path.exists(d):
-        os.makedirs(d)
 
 def _download_media(url, fname):
     """ download the given binary URL to fname """
@@ -110,9 +57,8 @@ def _make_badge_markup(badge_name, description, url, savedir):
                                                                                    alt=alt))
 
 def make_badges():
-    """ Regenerate the badges. Once run, copy them into badges/x.y.x/ """
+    """ Regenerate the badges into badges/generated """
     _require_branch('master')
-    version = '0.1.0'
     badge_sources = {
         'concept': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
         'wip': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
@@ -137,8 +83,7 @@ def make_badges():
 
 def publish():
     """Regenerate and publish to GitHub Pages"""
-    resp = prompt("This will clean, build, and push to GH pages (destroying the current gh-pages branch). Ok? [yes|No]")
-    if not re.match(r'(y|Y|yes|Yes|YES)', resp):
-        return False
+    shutil.rmtree('gh_pages/badges')
+    shutil.copytree('badges', 'gh_pages/badges')
     local("ghp-import gh_pages")
-    local("git push origin gh-pages")
+    print("Changes pushed into gh-pages branch; please verify that branch and then push it to origin to deploy.")
