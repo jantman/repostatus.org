@@ -18,13 +18,13 @@ This is accomplished by including a simple badge or URL in your project's README
 * <a name="inactive"></a> __Inactive__ - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.
 * <a name="unsupported"></a> __Unsupported__ - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.
 
-These status descriptions and the URLs to the corresponding icons are also available in a [JSON file](/badges/0.1.0/badges.json).
+These status descriptions and the URLs to the corresponding icons are also available in a [JSON file](/badges/latest/badges.json).
 
 ### What It Looks Like
 
 When using the recommended method (a badge embedded in your project's README file), it's as concise as this one image:
 
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
 This incorporates three components:
 
@@ -38,13 +38,13 @@ Setting up your project to use RepoStatus.org is as simple as adding the appropr
 
 Below are the various status icons, along with paste-able markup to add them in a variety of markup languages. Feel free to alter the alt-text (after the first ``-``) to suit your needs.
 
-* __Concept__ [![Project Status: Concept - Minimal or no implementation has been done yet.](http://www.repostatus.org/badges/0.1.0/concept.svg)](http://www.repostatus.org/#concept) [markdown](javascript:showsample('concept','md')) [ReST](javascript:showsample('concept','rst')) [HTML](javascript:showsample('concept','html'))
-* __WIP__ [![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/0.1.0/wip.svg)](http://www.repostatus.org/#wip) [markdown](javascript:showsample('wip','md')) [ReST](javascript:showsample('wip','rst')) [HTML](javascript:showsample('wip','html'))
-* __Suspended__ [![Project Status: Suspended - Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.](http://www.repostatus.org/badges/0.1.0/suspended.svg)](http://www.repostatus.org/#suspended) [markdown](javascript:showsample('suspended','md')) [ReST](javascript:showsample('suspended','rst')) [HTML](javascript:showsample('suspended','html'))
-* __Abandoned__ [![Project Status: Abandoned - Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](http://www.repostatus.org/badges/0.1.0/abandoned.svg)](http://www.repostatus.org/#abandoned) [markdown](javascript:showsample('abandoned','md')) [ReST](javascript:showsample('abandoned','rst')) [HTML](javascript:showsample('abandoned','html'))
-* __Active__ [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active) [markdown](javascript:showsample('active','md')) [ReST](javascript:showsample('active','rst')) [HTML](javascript:showsample('active','html'))
-* __Inactive__ [![Project Status: Inactive - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/0.1.0/inactive.svg)](http://www.repostatus.org/#inactive) [markdown](javascript:showsample('inactive','md')) [ReST](javascript:showsample('inactive','rst')) [HTML](javascript:showsample('inactive','html'))
-* __Unsupported__ [![Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](http://www.repostatus.org/badges/0.1.0/unsupported.svg)](http://www.repostatus.org/#unsupported) [markdown](javascript:showsample('unsupported','md')) [ReST](javascript:showsample('unsupported','rst')) [HTML](javascript:showsample('unsupported','html'))
+* __Concept__ [![Project Status: Concept - Minimal or no implementation has been done yet.](http://www.repostatus.org/badges/latest/concept.svg)](http://www.repostatus.org/#concept) [markdown](javascript:showsample('concept','md')) [ReST](javascript:showsample('concept','rst')) [HTML](javascript:showsample('concept','html'))
+* __WIP__ [![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip) [markdown](javascript:showsample('wip','md')) [ReST](javascript:showsample('wip','rst')) [HTML](javascript:showsample('wip','html'))
+* __Suspended__ [![Project Status: Suspended - Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.](http://www.repostatus.org/badges/latest/suspended.svg)](http://www.repostatus.org/#suspended) [markdown](javascript:showsample('suspended','md')) [ReST](javascript:showsample('suspended','rst')) [HTML](javascript:showsample('suspended','html'))
+* __Abandoned__ [![Project Status: Abandoned - Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](http://www.repostatus.org/badges/latest/abandoned.svg)](http://www.repostatus.org/#abandoned) [markdown](javascript:showsample('abandoned','md')) [ReST](javascript:showsample('abandoned','rst')) [HTML](javascript:showsample('abandoned','html'))
+* __Active__ [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [markdown](javascript:showsample('active','md')) [ReST](javascript:showsample('active','rst')) [HTML](javascript:showsample('active','html'))
+* __Inactive__ [![Project Status: Inactive - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/latest/inactive.svg)](http://www.repostatus.org/#inactive) [markdown](javascript:showsample('inactive','md')) [ReST](javascript:showsample('inactive','rst')) [HTML](javascript:showsample('inactive','html'))
+* __Unsupported__ [![Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](http://www.repostatus.org/badges/latest/unsupported.svg)](http://www.repostatus.org/#unsupported) [markdown](javascript:showsample('unsupported','md')) [ReST](javascript:showsample('unsupported','rst')) [HTML](javascript:showsample('unsupported','html'))
 
 <div id="samplewrapper" style="display: none;"><h5 id="sampletitle"></h5><div id="samplecode"></div></div>
 
@@ -58,7 +58,7 @@ I really wanted to write a full specification for this, complete with versioned 
 
 #### Identifier Strings
 
-The repostatus.org badge URL is the authoritative identifier of status. Regardless of any other formatting, when machines attempt to determine status they should only key off of a URL matching ``/^http[s]?:\/\/.*repostatus\.org\/badges\/(.+)\/(.+)\.svg$/``. The first capture group identifies the specification/API version, and the second identifies the status name.
+The repostatus.org badge URL is the authoritative identifier of status. Regardless of any other formatting, when machines attempt to determine status they should only key off of a URL matching ``/^http[s]?:\/\/.*repostatus\.org\/badges\/(.+)\/(.+)\.svg$/``. The first capture group identifies the specification/API version, and the second identifies the status name. Note that the specification/API version can currently be a [semver](http://semver.org/)-compliant string, or the string "latest".
 
 #### Machine Location and Parsing
 
