@@ -71,7 +71,7 @@ def make_badges():
         os.makedirs('badges/latest')
     badge_data = {}
     for name in badge_descriptions:
-        badge_data[name] = {'description': badge_descriptions[name], 'url': 'http://www.repostatus.org/badges/{ver}/{name}.svg'.format(ver=version, name=name)}
+        badge_data[name] = {'description': badge_descriptions[name], 'url': 'http://www.repostatus.org/badges/latest/{name}.svg'.format(name=name)}
     with open('badges/latest/badges.json', 'w') as fh:
         fh.write(json.dumps(badge_data, indent=2, sort_keys=True))
     print("badge info written to badges/latest/badges.json")
