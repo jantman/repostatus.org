@@ -58,7 +58,6 @@ def _make_badge_markup(badge_name, description, url, savedir):
 
 def make_badges():
     """ Regenerate the badges into badges/generated """
-    _require_branch('master')
     badge_sources = {
         'concept': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
         'wip': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
