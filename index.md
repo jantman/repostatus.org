@@ -66,6 +66,10 @@ Machine parsing is quite simple: first, search through any files in the top-leve
 
 There are some example parsers listed on the [parsers](/parsers) page.
 
+### Changelog
+
+See the [CHANGELOG.md on GitHub](https://github.com/jantman/repostatus.org/blob/master/CHANGELOG.md).
+
 ### Contributing
 
-This is a crazy idea of mine. But I think it's useful. I'm very open to comments, criticisms, suggestions, etc. Feel free to open an [issue on GitHub](https://github.com/jantman/repostatus.org/issues) or submit a pull request.
+This is a crazy idea of mine. But I think it's useful. I'm very open to comments, criticisms, suggestions, etc. Feel free to open an [issue on GitHub](https://github.com/jantman/repostatus.org/issues) or submit a pull request. Instructions for contributing are available [in the README on GitHub](https://github.com/jantman/repostatus.org/blob/master/README.md#contributing). A list of contributors is [also available](https://github.com/jantman/repostatus.org/blob/master/CONTRIBUTORS.md).
