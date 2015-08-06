@@ -32,6 +32,7 @@ that add or remove badges, or alter the meaning of existing badges.
 3. Re-run ``fab make_badges`` and ensure there are no new changes.
 4. Run ``fab version_badges:x.y.z`` (where ``x.y.z`` is the version number).
 5. Add a ``CHANGELOG.md`` entry.
+6. Run ``fab badges2pages`` to copy the badges under ``gh-pages/``
 6. Run ``fab publish`` to push changes to the gh-pages branch.
 7. Review the diff of gh-pages against origin.
 8. Assuing all is well, push gh-pages to origin. The changes are now live.

@@ -122,9 +122,22 @@ def version_badges(ver):
     with open('badges/%s/badges.json' % ver, 'w') as fh:
         fh.write(content)
 
-def publish():
-    """Regenerate and publish to GitHub Pages"""
+def badges2pages():
+    """Copy badges/ to gh_pages/badges/"""
     shutil.rmtree('gh_pages/badges')
     shutil.copytree('badges', 'gh_pages/badges')
-    local("ghp-import gh_pages")
+
+def publish():
+    """Regenerate and publish to GitHub Pages"""
+    x = local('git branch', capture=True)
+    if '* master' not in x.stdout:
+        print("ERROR: publish must be run from the master branch")
+        raise SystemExit(1)
+    x = local('git status', capture=True)
+    if (('Your branch is up-to-date with' not in x.stdout and
+                'HEAD detached at' not in x.stdout) or
+                'nothing to commit' not in x.stdout):
+        print("ERROR: Your local git clone is dirty or not pushed to origin.")
+        raise SystemExit(1)
+    #local("ghp-import gh_pages")
     print("Changes pushed into gh-pages branch; please verify that branch and then push it to origin to deploy.")
