@@ -57,7 +57,7 @@ def _make_badge_markup(badge_name, description, url, savedir):
                                                                                    alt=alt))
 
 def make_badges():
-    """ Regenerate the badges into badges/generated """
+    """ Regenerate the badges into badges/latest """
     badge_sources = {
         'concept': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
         'wip': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
@@ -67,18 +67,18 @@ def make_badges():
         'inactive': 'http://img.shields.io/badge/repo%20status-Inactive-yellowgreen.svg',
         'unsupported': 'http://img.shields.io/badge/repo%20status-Unsupported-lightgrey.svg',
     }
-    if not os.path.exists('badges/generated'):
-        os.makedirs('badges/generated')
+    if not os.path.exists('badges/latest'):
+        os.makedirs('badges/latest')
     badge_data = {}
     for name in badge_descriptions:
         badge_data[name] = {'description': badge_descriptions[name], 'url': 'http://www.repostatus.org/badges/{ver}/{name}.svg'.format(ver=version, name=name)}
-    with open('badges/generated/badges.json', 'w') as fh:
+    with open('badges/latest/badges.json', 'w') as fh:
         fh.write(json.dumps(badge_data, indent=2, sort_keys=True))
-    print("badge info written to badges/generated/badges.json")
+    print("badge info written to badges/latest/badges.json")
     for name in badge_sources:
-        _download_media(badge_sources[name], 'badges/generated/{n}.svg'.format(n=name))
-        _make_badge_markup(name, badge_descriptions[name], badge_data[name]['url'], 'badges/generated')
-    print("badge images and markup written to badges/generated")
+        _download_media(badge_sources[name], 'badges/latest/{n}.svg'.format(n=name))
+        _make_badge_markup(name, badge_descriptions[name], badge_data[name]['url'], 'badges/latest')
+    print("badge images and markup written to badges/latest")
 
 def publish():
     """Regenerate and publish to GitHub Pages"""
