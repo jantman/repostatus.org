@@ -139,5 +139,5 @@ def publish():
                 'nothing to commit' not in x.stdout):
         print("ERROR: Your local git clone is dirty or not pushed to origin.")
         raise SystemExit(1)
-    #local("ghp-import gh_pages")
+    local("ghp-import gh_pages")
     print("Changes pushed into gh-pages branch; please verify that branch and then push it to origin to deploy.")
