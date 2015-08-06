@@ -13,24 +13,44 @@ requests==2.7.0
 
 from fabric.api import local
 import os
+import re
 import requests
 import json
 import shutil
 
-badge_descriptions = {
-    "concept": "Minimal or no implementation has been done yet.",
-    "wip": "Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.",
-    "suspended": "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.",
-    "abandoned": "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.",
-    "active": "The project has reached a stable, usable state and is being actively developed.",
-    "inactive": "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.",
-    "unsupported": "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
+badge_info = {
+    'concept': {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
+        'description': "Minimal or no implementation has been done yet.",
+    },
+    'wip': {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
+        'description': "Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.",
+    },
+    'suspended': {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Suspended-orange.svg',
+        'description': "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.",
+    },
+    'abandoned': {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Abandoned-000000.svg',
+        'description': "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.",
+    },
+    'active': {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Active-brightgreen.svg',
+        'description': "The project has reached a stable, usable state and is being actively developed.",
+    },
+    'inactive': {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Inactive-yellowgreen.svg',
+        'description': "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.",
+    },
+    'unsupported': {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Unsupported-lightgrey.svg',
+        'description': "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
+    },
 }
 
 def _download_media(url, fname):
     """ download the given binary URL to fname """
-    if os.path.exists(fname):
-        raise SystemExit("Path {f} already exists.".format(f=fname))
     r = requests.get(url, stream=True)
     if r.status_code != 200:
         raise SystemExit("%s returned status code %d" % (url, r.status_code))
@@ -57,28 +77,50 @@ def _make_badge_markup(badge_name, description, url, savedir):
                                                                                    alt=alt))
 
 def make_badges():
-    """ Regenerate the badges into badges/generated """
-    badge_sources = {
-        'concept': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
-        'wip': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
-        'suspended': 'http://img.shields.io/badge/repo%20status-Suspended-orange.svg',
-        'abandoned': 'http://img.shields.io/badge/repo%20status-Abandoned-000000.svg',
-        'active': 'http://img.shields.io/badge/repo%20status-Active-brightgreen.svg',
-        'inactive': 'http://img.shields.io/badge/repo%20status-Inactive-yellowgreen.svg',
-        'unsupported': 'http://img.shields.io/badge/repo%20status-Unsupported-lightgrey.svg',
-    }
-    if not os.path.exists('badges/generated'):
-        os.makedirs('badges/generated')
+    """ Regenerate the badges into badges/latest """
+    if not os.path.exists('badges/latest'):
+        os.makedirs('badges/latest')
     badge_data = {}
-    for name in badge_descriptions:
-        badge_data[name] = {'description': badge_descriptions[name], 'url': 'http://www.repostatus.org/badges/{ver}/{name}.svg'.format(ver=version, name=name)}
-    with open('badges/generated/badges.json', 'w') as fh:
+    for name in badge_info:
+        badge_data[name] = {
+            'description': badge_info[name]['description'],
+            'url': 'http://www.repostatus.org/badges/latest/{name}.svg'.format(name=name)
+        }
+    with open('badges/latest/badges.json', 'w') as fh:
         fh.write(json.dumps(badge_data, indent=2, sort_keys=True))
-    print("badge info written to badges/generated/badges.json")
-    for name in badge_sources:
-        _download_media(badge_sources[name], 'badges/generated/{n}.svg'.format(n=name))
-        _make_badge_markup(name, badge_descriptions[name], badge_data[name]['url'], 'badges/generated')
-    print("badge images and markup written to badges/generated")
+    print("badge info written to badges/latest/badges.json")
+    for name, _dict in badge_info.items():
+        _download_media(_dict['shield_url'], 'badges/latest/{n}.svg'.format(n=name))
+        _make_badge_markup(name, _dict['description'], badge_data[name]['url'], 'badges/latest')
+    print("badge images and markup written to badges/latest")
+
+def version_badges(ver):
+    """Copy the latest badges into a versioned directory; update related files"""
+    if not re.match(r'\d+\.\d+\.\d+', ver):
+        raise SystemExit("Error: %s does not appear to be an x.y.z semver version" % ver)
+    badgedir = os.path.join('badges', ver)
+    if os.path.exists(badgedir):
+        raise SystemExit("Error: badge version %s already present!" % ver)
+    # copy latest
+    print("Copying badges/latest to badges/%s" % ver)
+    shutil.copytree('badges/latest', 'badges/%s' % ver)
+    # update URLs
+    print("Updating URLs in badges/%s/*.txt" % ver)
+    for fname in os.listdir(badgedir):
+        if not fname.endswith('.txt'):
+            continue
+        fpath = os.path.join(badgedir, fname)
+        with open(fpath, 'r') as fh:
+            content = fh.read()
+        content = content.replace('/badges/latest/', '/badges/%s/' % ver)
+        with open(fpath, 'w') as fh:
+            fh.write(content)
+    print("Updating badges/%s/badges.json" % ver)
+    with open('badges/%s/badges.json' % ver, 'r') as fh:
+        content = fh.read()
+    content = content.replace('/badges/latest/', '/badges/%s/' % ver)
+    with open('badges/%s/badges.json' % ver, 'w') as fh:
+        fh.write(content)
 
 def publish():
     """Regenerate and publish to GitHub Pages"""
