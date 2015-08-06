@@ -32,7 +32,7 @@ badge_info = {
         'description': "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.",
     },
     'abandoned': {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-Abandoned-000000.svg',
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Abandoned-red.svg',
         'description': "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.",
     },
     'active': {
