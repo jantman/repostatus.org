@@ -6,8 +6,8 @@ layout: minimal
 
 I have about 50 repositories on GitHub, in varying states of completion and support. Some of them are totally abandoned, some are active (with users and everything!) and some
 are just repositories holding a ``README.md`` describing some idea I had. I was about to embark on a new project, and realized I needed to get a handle on what I currently have
-first. After some thought, I realized that an awful lot of people are in the same position. And even more so, I can't count the number of times I've dug through a repository -
-and even emailed the author - to try and figure out if it was still active or not.
+first. After some thought, I realized that an awful lot of people are in the same position. And even more so, I can't count the number of times I've dug through a repository –
+and even emailed the author – to try and figure out if it was still active or not.
 
 So, I came up with this idea. I had to stop myself before I over-engineered it too much with a formal specification and versioned API and everything.
 
