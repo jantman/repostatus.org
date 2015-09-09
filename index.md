@@ -10,13 +10,13 @@ This is accomplished by including a simple badge or URL in your project's README
 
 #### Project Statuses
 
-* <a name="concept"></a> __Concept__ - Minimal or no implementation has been done yet.
-* <a name="wip"></a> __WIP__ - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
-* <a name="suspended"></a> __Suspended__ - Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.
-* <a name="abandoned"></a> __Abandoned__ - Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.
-* <a name="active"></a> __Active__ - The project has reached a stable, usable state and is being actively developed.
-* <a name="inactive"></a> __Inactive__ - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.
-* <a name="unsupported"></a> __Unsupported__ - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.
+* <a name="concept"></a>__Concept__ - Minimal or no implementation has been done yet.
+* <a name="wip"></a>__WIP__ - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
+* <a name="suspended"></a>__Suspended__ - Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.
+* <a name="abandoned"></a>__Abandoned__ - Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.
+* <a name="active"></a>__Active__ - The project has reached a stable, usable state and is being actively developed.
+* <a name="inactive"></a>__Inactive__ - The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.
+* <a name="unsupported"></a>__Unsupported__ - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.
 
 These status descriptions and the URLs to the corresponding icons are also available in a [JSON file](/badges/latest/badges.json).
 
