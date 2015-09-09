@@ -1,5 +1,5 @@
 """
-Repostatus.org fabfile - this is used to build badges and push to GitHub Pages.
+Repostatus.org fabfile – this is used to build badges and push to GitHub Pages.
 
 Requires Python (only tested with 2.7), Fabric and ghp-import.
 
@@ -61,7 +61,7 @@ def _download_media(url, fname):
 
 def _make_badge_markup(badge_name, description, url, savedir):
     """ generate example markup for a badge, write to disk under savedir """
-    alt = "Project Status: {statuscap} - {desc}".format(desc=description, statuscap=badge_name.capitalize())
+    alt = "Project Status: {statuscap} – {desc}".format(desc=description, statuscap=badge_name.capitalize())
     target = "http://www.repostatus.org/#{status}".format(status=badge_name)
     with open(os.path.join(savedir, '{n}_md.txt'.format(n=badge_name)), 'w') as fh:
         fh.write("[![{alt}]({url})]({target})\n".format(target=target,
