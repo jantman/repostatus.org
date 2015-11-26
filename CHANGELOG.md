@@ -6,6 +6,7 @@ Unreleased in Master
 
 - Merge [PR #15](https://github.com/jantman/repostatus.org/pull/15) - Remove leading spaces in the list of statuses
 - Update README.md docs on making changes to the site.
+- Merge fixed-up [PR #16](https://github.com/jantman/repostatus.org/pull/16) - Convert hyphen to en dash in badge title text
 
 1.0.0 (2015-08-05)
 ------------------
