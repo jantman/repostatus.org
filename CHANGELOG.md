@@ -1,6 +1,11 @@
 repostatus.org API/specification changelog
 ===========================================
 
+Unreleased in Master
+--------------------
+
+- Merge [PR #15](https://github.com/jantman/repostatus.org/pull/15) - Remove leading spaces in the list of statuses
+
 1.0.0 (2015-08-05)
 ------------------
 
