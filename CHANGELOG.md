@@ -8,6 +8,7 @@ repostatus.org API/specification changelog
 - Update README.md docs on making changes to the site.
 - Merge fixed-up [PR #16](https://github.com/jantman/repostatus.org/pull/16) - Convert hyphen to en dash in badge title text
 - Fix [#14](https://github.com/jantman/repostatus.org/issues/14) - WIP is incorrectly capitalized as 'Wip'
+- Fix example markup links on website.
 
 1.0.0 (2015-08-05)
 ------------------
