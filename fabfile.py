@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Repostatus.org fabfile – this is used to build badges and push to GitHub Pages.
 
