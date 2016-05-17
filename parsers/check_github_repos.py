@@ -19,7 +19,7 @@ if not already present.
 Copyright
 =========
 
-Copyright 2014 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
+Copyright 2014-2016 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
 Free for any use provided that patches are submitted back to me.
 
 The latest version of this script can be found at:
@@ -28,6 +28,9 @@ https://github.com/jantman/repostatus.org/blob/master/parsers/repostatusorg_list
 =========
 CHANGELOG
 =========
+
+2016-05-17 jantman:
+- add JSON output option
 
 2014-12-25 jantman:
 - initial script
@@ -41,6 +44,7 @@ import requests
 from github import Github
 import subprocess
 from base64 import b64decode
+import json
 
 FORMAT = "[%(levelname)s %(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(level=logging.INFO, format=FORMAT)
@@ -51,7 +55,7 @@ class RepoStatusOrg_GitHub_Checker:
 
     readme_re = re.compile(r'^readme.*$', flags=re.I)
     url_re = re.compile(r'http[s]?:\/\/.*repostatus\.org\/badges\/(.+)\/(.+)\.svg', flags=re.I)
-    
+
     def __init__(self, verbose=False):
         self.logger = logging.getLogger(self.__class__.__name__)
         if verbose:
@@ -136,7 +140,7 @@ class RepoStatusOrg_GitHub_Checker:
                 self.logger.debug("Match found in {f}: {u}".format(f=content.path, u=res.group(0)))
                 return (res.group(1), res.group(2))
         return None
-        
+
     def _find_candidate_files(self, repo):
         """
         Return a list of all files in the top directory/path of the repository
@@ -162,7 +166,7 @@ class RepoStatusOrg_GitHub_Checker:
         if 'repostatus.org' in files:
             candidates.append('repostatus.org')
         return candidates
-            
+
 
 def parse_args(argv):
     """
@@ -175,8 +179,11 @@ def parse_args(argv):
                    help='GitHub user or organization to check repos for; defaults to current user')
     p.add_argument('-f', '--forks', dest='forks', action='store_true', default=False,
                    help='also include forks')
+    p.add_argument('-j', '--json', dest='json_out', action='store_true',
+                   default=False, help='output JSON')
     args = p.parse_args(argv)
     return args
+
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
@@ -198,7 +205,10 @@ if __name__ == "__main__":
         output[repo] = s
         if len(repo) > maxlen:
             maxlen = len(repo)
-    fs = '{:<%d}   {}' % ( maxlen + 1 )
-    for repo in sorted(output):
-        print(fs.format(repo, output[repo]))
+    if args.json_out:
+        print(json.dumps(output))
+    else:
+        fs = '{:<%d}   {}' % ( maxlen + 1 )
+        for repo in sorted(output):
+            print(fs.format(repo, output[repo]))
     checker.logger.info("Found {t} repos, {u} with unknown status".format(t=total, u=unknown))
