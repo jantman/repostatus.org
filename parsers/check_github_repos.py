@@ -29,6 +29,9 @@ https://github.com/jantman/repostatus.org/blob/master/parsers/repostatusorg_list
 CHANGELOG
 =========
 
+2016-05-18 jantman:
+- add links to repo in HTML output
+
 2016-05-17 jantman:
 - add JSON and HTML output options
 
@@ -225,8 +228,9 @@ def htmlout(output, username):
 """
     tbody = ''
     for repo in sorted(output):
-        tbody += "        <tr><td>%s</td><td>%s</td></tr>\n" % (
-            repo, output[repo]
+        href = 'https://github.com/%s/%s' % (username, repo)
+        tbody += "        <tr><td><a href=\"%s\">%s</a></td><td>%s</td></tr>\n" % (
+            href, repo, output[repo]
         )
     dt = datetime.now().isoformat()
     out = out.format(user=username, dt=dt, tbody=tbody, script=script)
