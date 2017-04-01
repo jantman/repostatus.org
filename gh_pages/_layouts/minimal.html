@@ -17,7 +17,7 @@
       var badge_data;
 
       $.getJSON('badges/latest/badges.json', function(json){ badge_data = json; });
-      
+
       function showsample(badgename, markup) {
       output = '';
       outtype = '';
@@ -64,7 +64,8 @@
 	<p class="view"><a href="/">Home</a></p>
 	<p class="view"><a href="/history">History</a></p>
 	<p class="view"><a href="/parsers">Parsers</a></p>
-	
+  <p class="view"><a href="/contributing">Get Involved</a></p>
+
       </header>
       <section>
         {{ content }}
@@ -76,6 +77,6 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+
   </body>
 </html>
