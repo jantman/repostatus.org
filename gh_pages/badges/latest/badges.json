@@ -19,6 +19,11 @@
     "display_name": "Inactive", 
     "url": "http://www.repostatus.org/badges/latest/inactive.svg"
   }, 
+  "moved": {
+    "description": "The project has been moved to a new location, and the version at that location should be considered authoritative.", 
+    "display_name": "Moved", 
+    "url": "http://www.repostatus.org/badges/latest/moved.svg"
+  }, 
   "suspended": {
     "description": "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.", 
     "display_name": "Suspended", 

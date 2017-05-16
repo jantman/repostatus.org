@@ -22,6 +22,7 @@ badge_descriptions = {
     "active": "The project has reached a stable, usable state and is being actively developed.",
     "inactive": "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.",
     "unsupported": "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
+    "moved": 'The project has been moved to a new location, and the version at that location should be considered authoritative. This status should be accompanied by a new URL.',
 }
 
 def _get_branch():
@@ -108,7 +109,7 @@ def _make_badge_markup(badge_name, description, url, savedir):
         fh.write('.. image:: {url}\n   :alt: {alt}\n   :target: {target}\n'.format(url=url,
                                                                                    target=target,
                                                                                    alt=alt))
-        
+
 def make_badges():
     """ Regenerate the badges. Once run, copy them into badges/x.y.x/ """
     _require_branch('master')
@@ -121,6 +122,7 @@ def make_badges():
         'active': 'http://img.shields.io/badge/repo%20status-Active-brightgreen.svg',
         'inactive': 'http://img.shields.io/badge/repo%20status-Inactive-yellowgreen.svg',
         'unsupported': 'http://img.shields.io/badge/repo%20status-Unsupported-lightgrey.svg',
+        'moved': 'http://img.shields.io/badge/repo%20status-Moved-red.svg',
     }
     if not os.path.exists('badges/generated'):
         os.makedirs('badges/generated')

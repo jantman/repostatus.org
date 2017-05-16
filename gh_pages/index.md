@@ -17,6 +17,7 @@ This is accomplished by including a simple badge or URL in your project's README
 * <a name="active"></a>__Active__ – The project has reached a stable, usable state and is being actively developed.
 * <a name="inactive"></a>__Inactive__ – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.
 * <a name="unsupported"></a>__Unsupported__ – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.
+* <a name="moved"></a>__Moved__ - The project has been moved to a new location, and the version at that location should be considered authoritative. This status should be accompanied by a new URL.
 
 These status descriptions and the URLs to the corresponding icons are also available in a [JSON file](/badges/latest/badges.json).
 
@@ -45,6 +46,7 @@ Below are the various status icons, along with paste-able markup to add them in 
 * __Active__ [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [markdown](javascript:showsample('active','md')) [ReST](javascript:showsample('active','rst')) [HTML](javascript:showsample('active','html'))
 * __Inactive__ [![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/latest/inactive.svg)](http://www.repostatus.org/#inactive) [markdown](javascript:showsample('inactive','md')) [ReST](javascript:showsample('inactive','rst')) [HTML](javascript:showsample('inactive','html'))
 * __Unsupported__ [![Project Status: Unsupported – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](http://www.repostatus.org/badges/latest/unsupported.svg)](http://www.repostatus.org/#unsupported) [markdown](javascript:showsample('unsupported','md')) [ReST](javascript:showsample('unsupported','rst')) [HTML](javascript:showsample('unsupported','html'))
+* __Moved__ [![Project Status: Moved to http://example.com – The project has been moved to a new location, and the version at that location should be considered authoritative.](http://www.repostatus.org/badges/latest/moved.svg)](http://www.repostatus.org/#moved) [markdown](javascript:showsample('moved','md')) [ReST](javascript:showsample('moved','rst')) [HTML](javascript:showsample('moved','html')) - __Note__ that there are special requirements around the formatting of this status. In the examples, replace ``http://example.com`` with the project's new URL. See [Moved Identifier String](#moved-identifier), below, for more information.
 
 <div id="samplewrapper" style="display: none;"><h5 id="sampletitle"></h5><div id="samplecode"></div></div>
 
@@ -54,11 +56,21 @@ If for some reason you don't want people to see the repostatus.org status identi
 
 ### Specification
 
-I really wanted to write a full specification for this, complete with versioned URLs and JSON metadata describing the different statuses. If anyone else in the world wants to use this stuff, maybe I'll do that. In the mean time, here's version 0.1.0 of the "specification".
+I really wanted to write a full specification for this, complete with versioned URLs and JSON metadata describing the different statuses. If anyone else in the world wants to use this stuff, maybe I'll do that. In the mean time, here's the current version of the "specification".
 
 #### Identifier Strings
 
 The repostatus.org badge URL is the authoritative identifier of status. Regardless of any other formatting, when machines attempt to determine status they should only key off of a URL matching ``/^http[s]?:\/\/.*repostatus\.org\/badges\/(.+)\/(.+)\.svg$/``. The first capture group identifies the specification/API version, and the second identifies the status name. Note that the specification/API version can currently be a [semver](http://semver.org/)-compliant string, or the string "latest".
+
+##### <a name="moved-identifier"></a>Moved Identifier String
+
+The "Moved" status is slightly more complicated as it must also specify the new location. Guidelines for use are as follows:
+
+1. If the link is embedded in a markup format that supports alt-text for images (i.e. ReST, Markdown or HTML), the alt-text __must__ begin with the string "Project Status: Moved to <url>" where ``<url>`` is the new URL (where the project was moved to). That string __should__ be followed by a hyphen and then the official status description. The image __must__ remain linked to the appropriate repostatus.org URL. The image markup __may__ be followed by a separate link to the new URL.
+2. Markup formats not supporting alt-text for images (i.e. plaintext files) __must__ specify this status in the format "<badge url> to <new url>".
+3. If no new URL exists yet, the repository should have the "Abandoned" status instead of "Moved".
+
+Any machine parsing of the "Moved" status should recursively follow repostatus.org identifiers to determine the final location of the project.
 
 #### Machine Location and Parsing
 
