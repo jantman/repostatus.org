@@ -29,7 +29,7 @@
         }
         $("#sampletitle").html(outtype + " for " + badge_data[badgename]['display_name'] + " Status (<a href=\"http://www.repostatus.org/badges/latest/" + badgename + "_" + markup + ".txt\">direct link</a>)");
         $.get('http://www.repostatus.org/badges/latest/' + badgename + '_' + markup + '.txt', function(data) {
-          $("#samplecode").html('<code>' + htmlEncode(data) + '</code>');
+          $("#samplecode").html('<pre>' + htmlEncode(data) + '</pre>');
           $("#samplewrapper").show();
         });
       }
