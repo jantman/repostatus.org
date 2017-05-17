@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="119" height="20">
   <linearGradient id="smooth" x2="0" y2="100%">
-    <stop offset="0"  stop-color="#fff" stop-opacity=".7"/>
-    <stop offset=".1" stop-color="#aaa" stop-opacity=".1"/>
-    <stop offset=".9" stop-color="#000" stop-opacity=".3"/>
-    <stop offset="1"  stop-color="#000" stop-opacity=".5"/>
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
 
   <mask id="round">
