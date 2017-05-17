@@ -22,7 +22,7 @@ import shutil
 badge_info = {
     'concept': {
         'shield_url': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
-        'description': "Minimal or no implementation has been done yet.",
+        'description': "Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.",
         'display_name': 'Concept',
     },
     'wip': {
