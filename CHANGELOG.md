@@ -1,7 +1,7 @@
 repostatus.org API/specification changelog
 ===========================================
 
-1.2.0 (2017-05-15)
+1.2.0 (2017-05-17)
 ------------------
 
 - Add "Moved" status.
