@@ -17,35 +17,21 @@
       var badge_data;
 
       $.getJSON('badges/latest/badges.json', function(json){ badge_data = json; });
-      
+
       function showsample(badgename, markup) {
-      output = '';
-      outtype = '';
-      if ( markup == "md" ) {
-        output = make_md(badgename, badge_data[badgename]['display_name'], badge_data[badgename]['url'], badge_data[badgename]['description']);
-        outtype = "Markdown";
-      } else if ( markup == "rst" ) {
-        output = make_rst(badgename, badge_data[badgename]['display_name'], badge_data[badgename]['url'], badge_data[badgename]['description']);
-        outtype = "ReST";
-      } else if ( markup == "html") {
-        output = make_html(badgename, badge_data[badgename]['display_name'], badge_data[badgename]['url'], badge_data[badgename]['description']);
-        outtype = "HTML";
-      }
-      $("#samplecode").html(output);
-      $("#sampletitle").html(outtype + " for " + badge_data[badgename]['display_name'] + " Status (<a href=\"http://www.repostatus.org/badges/latest/" + badgename + "_" + markup + ".txt\">direct link</a>)");
-      $("#samplewrapper").show();
-      }
-
-      function make_md(badgename, display_name, url, desc) {
-        return "<code>" + htmlEncode("[![Project Status: " + display_name + " - " + desc + "](" + url + ")](http://www.repostatus.org/#" + badgename + ")") + "</code>";
-      }
-
-      function make_rst(badgename, display_name, url, desc) {
-        return "<code>" + htmlEncode(".. image:: " + url) + "</code><br />&nbsp;&nbsp;&nbsp;<code>" + htmlEncode(":alt: Project Status: " + display_name + " - " + desc) + "</code><br />&nbsp;&nbsp;&nbsp;<code>" + htmlEncode(":target: http://www.repostatus.org/#" + badgename) + "</code>";
-      }
-
-      function make_html(badgename, display_name, url, desc) {
-        return "<code>" + htmlEncode("<a href=\"http://www.repostatus.org/#" + badgename + "\"><img src=\"" + url + "\" alt=\"Project Status: " + display_name + " - " + desc + "\" \></a>") + "</code>";
+        outtype = '';
+        if ( markup == "md" ) {
+          outtype = "Markdown";
+        } else if ( markup == "rst" ) {
+          outtype = "ReST";
+        } else if ( markup == "html") {
+          outtype = "HTML";
+        }
+        $("#sampletitle").html(outtype + " for " + badge_data[badgename]['display_name'] + " Status (<a href=\"http://www.repostatus.org/badges/latest/" + badgename + "_" + markup + ".txt\">direct link</a>)");
+        $.get('http://www.repostatus.org/badges/latest/' + badgename + '_' + markup + '.txt', function(data) {
+          $("#samplecode").html('<pre>' + htmlEncode(data) + '</pre>');
+          $("#samplewrapper").show();
+        });
       }
 
       function htmlEncode(value) {
@@ -63,9 +49,10 @@
 
 	<p class="view"><a href="/">Home</a></p>
 	<p class="view"><a href="/history">History</a></p>
-	<p class="view"><a href="/parsers">Parsers</a></p>
   <p class="view"><a href="/lifecycle">Lifecycle</a></p>
-	
+	<p class="view"><a href="/parsers">Parsers</a></p>
+  <p class="view"><a href="/contributing">Get Involved</a></p>
+
       </header>
       <section>
         {{ content }}
@@ -77,6 +64,6 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+
   </body>
 </html>

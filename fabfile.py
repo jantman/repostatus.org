@@ -22,7 +22,7 @@ import shutil
 badge_info = {
     'concept': {
         'shield_url': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
-        'description': "Minimal or no implementation has been done yet.",
+        'description': "Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.",
         'display_name': 'Concept',
     },
     'wip': {
@@ -55,6 +55,11 @@ badge_info = {
         'description': "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
         'display_name': 'Unsupported',
     },
+    "moved": {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Moved-red.svg',
+        'description': 'The project has been moved to a new location, and the version at that location should be considered authoritative.',
+        'display_name': 'Moved'
+    }
 }
 
 def _download_media(url, fname):
@@ -69,20 +74,66 @@ def _download_media(url, fname):
 
 def _make_badge_markup(badge_name, display_name, description, url, savedir):
     """ generate example markup for a badge, write to disk under savedir """
-    alt = "Project Status: {statuscap} – {desc}".format(desc=description, statuscap=display_name)
+    if badge_name == 'moved':
+        moved_to = 'http://example.com'
+        moved = 'to %s ' % moved_to
+    else:
+        moved_to = None
+        moved = ''
+    alt = "Project Status: {statuscap} {moved}– {desc}".format(
+        desc=description,
+        statuscap=display_name,
+        moved=moved
+    )
     target = "http://www.repostatus.org/#{status}".format(status=badge_name)
     with open(os.path.join(savedir, '{n}_md.txt'.format(n=badge_name)), 'w') as fh:
-        fh.write("[![{alt}]({url})]({target})\n".format(target=target,
-                                                        url=url,
-                                                        alt=alt))
+        fh.write(_format_md(url, target, alt, moved_to))
     with open(os.path.join(savedir, '{n}_html.txt'.format(n=badge_name)), 'w') as fh:
-        fh.write('<a href="{target}"><img src="{url}" alt="{alt}" /></a>\n'.format(url=url,
-                                                                                   target=target,
-                                                                                   alt=alt))
+        fh.write(_format_html(url, target, alt, moved_to))
     with open(os.path.join(savedir, '{n}_rst.txt'.format(n=badge_name)), 'w') as fh:
-        fh.write('.. image:: {url}\n   :alt: {alt}\n   :target: {target}\n'.format(url=url,
-                                                                                   target=target,
-                                                                                   alt=alt))
+        fh.write(_format_rst(url, target, alt, moved_to))
+
+def _format_md(url, target, alt, moved_to=None):
+    if moved_to is None:
+        moved = ''
+    else:
+        moved = ' to [%s](%s)' % (moved_to, moved_to)
+    s = "[![{alt}]({url})]({target}){moved}\n".format(
+        target=target,
+        url=url,
+        alt=alt,
+        moved=moved
+    )
+    return s
+
+def _format_rst(url, target, alt, moved_to=None):
+    if moved_to is None:
+        return '.. image:: {url}\n   :alt: {alt}\n   :target: {target}\n'.format(
+            url=url,
+            target=target,
+            alt=alt
+        )
+    s = '|repostatus| to `%s <%s>`_\n\n' % (moved_to, moved_to)
+    s += '.. |repostatus| image:: {url}\n   :alt: {alt}\n   ' \
+        ':target: {target}\n'.format(
+            url=url,
+            target=target,
+            alt=alt
+        )
+    return s
+
+def _format_html(url, target, alt, moved_to=None):
+    if moved_to is None:
+        moved = ''
+    else:
+        moved = ' to <a href="%s">%s</a>' % (moved_to, moved_to)
+    s = '<a href="{target}"><img src="{url}" alt="{alt}" /></a>{moved}\n'.format(
+        url=url,
+        target=target,
+        alt=alt,
+        moved=moved
+    )
+    return s
 
 def make_badges():
     """ Regenerate the badges into badges/latest """

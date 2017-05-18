@@ -1,6 +1,12 @@
 repostatus.org API/specification changelog
 ===========================================
 
+2.0.0 (2017-05-17)
+------------------
+
+- Add "Moved" status per [Issue #3](https://github.com/jantman/repostatus.org/issues/3) ([PR #24](https://github.com/jantman/repostatus.org/pull/24)).
+- Clarify the wording of "Concept" status per [Issue #22](https://github.com/jantman/repostatus.org/issues/22)
+
 1.1.0 (2015-11-25)
 ------------------
 

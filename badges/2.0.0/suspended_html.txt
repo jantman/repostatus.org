@@ -1,0 +1,1 @@
+<a href="http://www.repostatus.org/#suspended"><img src="http://www.repostatus.org/badges/2.0.0/suspended.svg" alt="Project Status: Suspended – Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work." /></a>

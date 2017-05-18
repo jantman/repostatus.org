@@ -7,3 +7,4 @@ Listed in chronological order.
 * [c33s](https://github.com/c33s)
 * [jennybc](https://github.com/jennybc)
 * [roryokane](https://github.com/roryokane)
+* [HoverBaum](https://github.com/HoverBaum)
