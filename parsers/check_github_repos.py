@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 """
-This script uses the GitHub API (via PyGithub) to list all of a user's repositories,
-and then requests the main repository page (
+This script uses the GitHub API (via PyGithub) to list all of a user's
+repositories (optionally including forks), searches each repository for
+RepoStatus information in ``repostatus.org``, ``.repostatus.org``, or any file
+in the root of the repository starting with ``readme`` (case-insensitive),
+and outputs a listing of repos and their statuses.
 
 ============
 Requirements
 ============
 
 * Python 2.7 or newer.
-* pygithub - `pip install PyGithub` <https://github.com/jacquev6/PyGithub>
+* pygithub - `pip install pygithub` <https://github.com/jacquev6/PyGithub>
 * requests - `pip install requests`
 
 You'll need to set your GitHub API token in your git config;
@@ -19,7 +22,7 @@ if not already present.
 Copyright
 =========
 
-Copyright 2014-2016 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
+Copyright 2014-2018 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
 Free for any use provided that patches are submitted back to me.
 
 The latest version of this script can be found at:
@@ -28,6 +31,13 @@ https://github.com/jantman/repostatus.org/blob/master/parsers/repostatusorg_list
 =========
 CHANGELOG
 =========
+
+2018-04-01 jantman:
+- Give user some help if non-standard library modules can't be imported
+- Make RepoStatusOrg_GitHub_Checker a new-style class
+- Update summary at top of this docstring
+- Add -F/--fail-on-unknown option
+- Python3 fixes
 
 2016-05-18 jantman:
 - add links to repo in HTML output
@@ -43,18 +53,33 @@ import sys
 import argparse
 import logging
 import re
-import requests
-from github import Github
 import subprocess
 from base64 import b64decode
 import json
 from datetime import datetime
 
+try:
+    import requests
+except ImportError:
+    sys.stderr.write(
+        'ERROR importing "requests". If it is not installed, please '
+        '"pip install requests"\n'
+    )
+    raise
+try:
+    from github import Github
+except ImportError:
+    sys.stderr.write(
+        'ERROR importing "github". If it is not installed, please '
+        '"pip install pygithub"\n'
+    )
+    raise
+
 FORMAT = "[%(levelname)s %(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(level=logging.INFO, format=FORMAT)
 
 
-class RepoStatusOrg_GitHub_Checker:
+class RepoStatusOrg_GitHub_Checker(object):
     """ check a user's GitHub repos for repostatus.org status identifiers """
 
     readme_re = re.compile(r'^readme.*$', flags=re.I)
@@ -67,6 +92,8 @@ class RepoStatusOrg_GitHub_Checker:
         # try to get GitHub credentials
         try:
             token = subprocess.check_output(['git', 'config', '--global', 'github.token']).strip()
+            if isinstance(token, type(b'')):
+                token = token.decode()
             self.logger.debug("got github token: {t}".format(t=token))
         except subprocess.CalledProcessError:
             self.logger.error("ERROR: no github token found. Set 'git config --global github.token' to your API token.")
@@ -136,10 +163,13 @@ class RepoStatusOrg_GitHub_Checker:
             s = ''
             if content.encoding == 'base64':
                 s = b64decode(content.content)
+                if isinstance(s, type(b'')):
+                    s = s.decode()
             else:
-                self.logger.error("unknown encoding '{e}' on file {p} in repository {r}".format(e=content.encoding,
-                                                                                                p=content.path,
-                                                                                                r=repo.name))
+                self.logger.error(
+                    "unknown encoding '%s' on file %s in repository %s",
+                    content.encoding, content.path, repo.name
+                )
             res = self.url_re.search(s)
             if res is not None:
                 self.logger.debug("Match found in {f}: {u}".format(f=content.path, u=res.group(0)))
@@ -163,7 +193,7 @@ class RepoStatusOrg_GitHub_Checker:
             files.append(x.name)
         candidates = []
         # sort files lexicographically
-        for fname in sorted(files, lambda x,y: cmp(x.lower(), y.lower()) or cmp(x,y)):
+        for fname in sorted(files, key=lambda x: x.lower()):
             if self.readme_re.match(fname):
                 candidates.append(fname)
         if '.repostatus.org' in files:
@@ -185,7 +215,11 @@ def parse_args(argv):
     p.add_argument('-f', '--forks', dest='forks', action='store_true', default=False,
                    help='also include forks')
     p.add_argument('-o', '--output-format', dest='format', action='store',
-                   default='text', help='output format - (text|json|html)')
+                   choices=['text', 'json', 'html'],
+                   default='text', help='output format - (text|json|html) - default "text"')
+    p.add_argument('-F', '--fail-on-unknown', dest='fail_on_unknown',
+                   action='store_true', default=False,
+                   help='exit 1 if any repos have an unknown status')
     args = p.parse_args(argv)
     return args
 
@@ -239,20 +273,18 @@ def htmlout(output, username):
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    if args.format not in ['text', 'json', 'html']:
-        raise SystemExit("Invalid output format.")
     # initialize the class
     checker = RepoStatusOrg_GitHub_Checker(verbose=args.verbose)
     # run the check
     results = checker.check(args.user, include_forks=args.forks)
     total = 0
-    unknown = 0
+    unknown = []
     output = {}
     maxlen = 0
     for repo in results:
         if results[repo] is None:
             s = 'UNKNOWN'
-            unknown += 1
+            unknown.append(repo)
         else:
             s = results[repo][1]
         total += 1
@@ -268,4 +300,10 @@ if __name__ == "__main__":
         fs = '{:<%d}   {}' % ( maxlen + 1 )
         for repo in sorted(output):
             print(fs.format(repo, output[repo]))
-    checker.logger.info("Found {t} repos, {u} with unknown status".format(t=total, u=unknown))
+    checker.logger.info(
+        "Found %d repos, %d with unknown status", total, len(unknown)
+    )
+    if len(unknown) > 0:
+        checker.logger.info('Unknown repos: %s', unknown)
+        if args.fail_on_unknown:
+            raise SystemExit(1)
