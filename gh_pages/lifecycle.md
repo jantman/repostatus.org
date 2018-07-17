@@ -13,7 +13,7 @@ Repostatus aims to answer two questions about a repository:
 
 We wish to talk about whether the content of a repository is in a usable state and how much support from contributors can be expected. Thus statuses can be divided along two axes: usability and support.
 
-![Flowdiagram representation of a typical lifecycle.](/images/lifecycle.png)
+![Flowdiagram representation of a typical lifecycle.](/images/lifecycle.svg)
 
 As illustrated above the statuses of a repository can be split into two groups: unstable repos and stable repos.
 
