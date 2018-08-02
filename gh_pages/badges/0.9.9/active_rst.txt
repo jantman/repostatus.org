@@ -1,3 +1,3 @@
-.. image:: http://www.repostatus.org/badges/0.9.9/active.svg
+.. image:: https://www.repostatus.org/badges/0.9.9/active.svg
    :alt: Project Status: Active - The project has reached a stable, usable state and is being actively developed.
-   :target: http://www.repostatus.org/#active
+   :target: https://www.repostatus.org/#active
