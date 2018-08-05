@@ -16,6 +16,6 @@ that is, and how ironically secretive GH is about feature requests and fixing bu
 anyway, but I doubt it will go anywhere. Then I started thinking about how to do this without GitHub involved, which would give the added bonus that it's hosting-service
 agnostic (and VCS-agnostic too, so it'll work for that crowd of Mercurial users too).
 
-The blog post where I first laid this out is [here](http://blog.jasonantman.com/2014/12/idea-for-a-generic-method-to-communicate-repositoryproject-status/). Sure, this is a tiny
+The blog post where I first laid this out is [here](https://blog.jasonantman.com/2014/12/idea-for-a-generic-method-to-communicate-repositoryproject-status/). Sure, this is a tiny
 little thing that is more of a community suggestion than a standard, but it'd sure be nice if we could all easily tell each other what's done and what isn't, and more importantly,
 what we want to spend time on again "one day."
