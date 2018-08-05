@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-This is an example parser for the <https://www.repostatus.org/> specification.
+This is an example parser for the <http://www.repostatus.org/> specification.
 It checks a single project/repository on disk, or a directory containing multiple
 projects, and reports the status(es).
 
@@ -34,7 +34,7 @@ On a directory containing multiple git clones, some of which have the identifier
 Copyright
 =========
 
-Copyright 2014 Jason Antman <jason@jasonantman.com> <https://jantman.github.io/>
+Copyright 2014 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
 Free for any use provided that patches are submitted back to me.
 
 The latest version of this script can be found at:

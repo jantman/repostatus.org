@@ -22,7 +22,7 @@ if not already present.
 Copyright
 =========
 
-Copyright 2014-2018 Jason Antman <jason@jasonantman.com> <https://jantman.github.io/>
+Copyright 2014-2018 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
 Free for any use provided that patches are submitted back to me.
 
 The latest version of this script can be found at:
@@ -226,8 +226,8 @@ def parse_args(argv):
 
 def htmlout(output, username):
     out = """
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="https://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <title>repostatus.org parse results for {user}</title>
