@@ -2,41 +2,41 @@
   "abandoned": {
     "description": "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.", 
     "display_name": "Abandoned", 
-    "url": "http://www.repostatus.org/badges/latest/abandoned.svg"
+    "url": "https://www.repostatus.org/badges/latest/abandoned.svg"
   }, 
   "active": {
     "description": "The project has reached a stable, usable state and is being actively developed.", 
     "display_name": "Active", 
-    "url": "http://www.repostatus.org/badges/latest/active.svg"
+    "url": "https://www.repostatus.org/badges/latest/active.svg"
   }, 
   "concept": {
     "description": "Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.", 
     "display_name": "Concept", 
-    "url": "http://www.repostatus.org/badges/latest/concept.svg"
+    "url": "https://www.repostatus.org/badges/latest/concept.svg"
   }, 
   "inactive": {
     "description": "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.", 
     "display_name": "Inactive", 
-    "url": "http://www.repostatus.org/badges/latest/inactive.svg"
+    "url": "https://www.repostatus.org/badges/latest/inactive.svg"
   }, 
   "moved": {
     "description": "The project has been moved to a new location, and the version at that location should be considered authoritative.", 
     "display_name": "Moved", 
-    "url": "http://www.repostatus.org/badges/latest/moved.svg"
+    "url": "https://www.repostatus.org/badges/latest/moved.svg"
   }, 
   "suspended": {
     "description": "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.", 
     "display_name": "Suspended", 
-    "url": "http://www.repostatus.org/badges/latest/suspended.svg"
+    "url": "https://www.repostatus.org/badges/latest/suspended.svg"
   }, 
   "unsupported": {
     "description": "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.", 
     "display_name": "Unsupported", 
-    "url": "http://www.repostatus.org/badges/latest/unsupported.svg"
+    "url": "https://www.repostatus.org/badges/latest/unsupported.svg"
   }, 
   "wip": {
     "description": "Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.", 
     "display_name": "WIP", 
-    "url": "http://www.repostatus.org/badges/latest/wip.svg"
+    "url": "https://www.repostatus.org/badges/latest/wip.svg"
   }
 }
