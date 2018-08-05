@@ -1,18 +1,18 @@
 repostatus.org
 ==============
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 A standard to easily communicate to humans and machines the development/support and usability status of software repositories/projects.
 
-For the majority of documentation and human-readable text, see http://www.repostatus.org/ or the [gh-pages branch](https://github.com/jantman/repostatus.org/tree/gh-pages) from which it is built.
+For the majority of documentation and human-readable text, see https://www.repostatus.org/ or the [gh-pages branch](https://github.com/jantman/repostatus.org/tree/gh-pages) from which it is built.
 
 Please feel free to leave comments as Issues, or open pull requests.
 
 Community Involvement
 ---------------------
 
-This project seems to have gained a lot more interest than I thought it would. As of April, 2017 there are [over 1,200 references on GitHub](https://github.com/search?l=&q=http%3A%2F%2Fwww.repostatus.org%2Fbadges%2F+-user%3A%22jantman%22&ref=advsearch&type=Code&utf8=%E2%9C%93)
+This project seems to have gained a lot more interest than I thought it would. As of April, 2017 there are [over 1,200 references on GitHub](https://github.com/search?l=&q=https%3A%2F%2Fwww.repostatus.org%2Fbadges%2F+-user%3A%22jantman%22&ref=advsearch&type=Code&utf8=%E2%9C%93)
 to repostatus.org badge URLs. I do *not* want to be the sole person making decisions for this project. I encourage everyone who finds
 it useful to watch [the repo on GitHub](https://github.com/jantman/repostatus.org) and provide their feedback in discussions, especially the
 issues with the [discussion](https://github.com/jantman/repostatus.org/issues?q=is%3Aopen+is%3Aissue+label%3Adiscussion) or

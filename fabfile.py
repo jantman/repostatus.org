@@ -21,42 +21,42 @@ import shutil
 
 badge_info = {
     'concept': {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
+        'shield_url': 'https://img.shields.io/badge/repo%20status-Concept-ffffff.svg',
         'description': "Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.",
         'display_name': 'Concept',
     },
     'wip': {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-WIP-yellow.svg',
+        'shield_url': 'https://img.shields.io/badge/repo%20status-WIP-yellow.svg',
         'description': "Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.",
         'display_name': 'WIP',
     },
     'suspended': {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-Suspended-orange.svg',
+        'shield_url': 'https://img.shields.io/badge/repo%20status-Suspended-orange.svg',
         'description': "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.",
         'display_name': 'Suspended',
     },
     'abandoned': {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-Abandoned-red.svg',
+        'shield_url': 'https://img.shields.io/badge/repo%20status-Abandoned-red.svg',
         'description': "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.",
         'display_name': 'Abandoned',
     },
     'active': {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-Active-brightgreen.svg',
+        'shield_url': 'https://img.shields.io/badge/repo%20status-Active-brightgreen.svg',
         'description': "The project has reached a stable, usable state and is being actively developed.",
         'display_name': 'Active',
     },
     'inactive': {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-Inactive-yellowgreen.svg',
+        'shield_url': 'https://img.shields.io/badge/repo%20status-Inactive-yellowgreen.svg',
         'description': "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.",
         'display_name': 'Inactive',
     },
     'unsupported': {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-Unsupported-lightgrey.svg',
+        'shield_url': 'https://img.shields.io/badge/repo%20status-Unsupported-lightgrey.svg',
         'description': "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
         'display_name': 'Unsupported',
     },
     "moved": {
-        'shield_url': 'http://img.shields.io/badge/repo%20status-Moved-red.svg',
+        'shield_url': 'https://img.shields.io/badge/repo%20status-Moved-red.svg',
         'description': 'The project has been moved to a new location, and the version at that location should be considered authoritative.',
         'display_name': 'Moved'
     }
@@ -75,7 +75,7 @@ def _download_media(url, fname):
 def _make_badge_markup(badge_name, display_name, description, url, savedir):
     """ generate example markup for a badge, write to disk under savedir """
     if badge_name == 'moved':
-        moved_to = 'http://example.com'
+        moved_to = 'https://example.com'
         moved = 'to %s ' % moved_to
     else:
         moved_to = None
@@ -85,7 +85,7 @@ def _make_badge_markup(badge_name, display_name, description, url, savedir):
         statuscap=display_name,
         moved=moved
     )
-    target = "http://www.repostatus.org/#{status}".format(status=badge_name)
+    target = "https://www.repostatus.org/#{status}".format(status=badge_name)
     with open(os.path.join(savedir, '{n}_md.txt'.format(n=badge_name)), 'w') as fh:
         fh.write(_format_md(url, target, alt, moved_to))
     with open(os.path.join(savedir, '{n}_html.txt'.format(n=badge_name)), 'w') as fh:
@@ -143,7 +143,7 @@ def make_badges():
     for name in badge_info:
         badge_data[name] = {
             'description': badge_info[name]['description'],
-            'url': 'http://www.repostatus.org/badges/latest/{name}.svg'.format(name=name),
+            'url': 'https://www.repostatus.org/badges/latest/{name}.svg'.format(name=name),
             'display_name': badge_info[name]['display_name'],
         }
     with open('badges/latest/badges.json', 'w') as fh:
