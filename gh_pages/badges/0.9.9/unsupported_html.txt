@@ -1,1 +1,1 @@
-<a href="https://www.repostatus.org/#unsupported"><img src="https://www.repostatus.org/badges/0.9.9/unsupported.svg" alt="Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired." /></a>
+<a href="http://www.repostatus.org/#unsupported"><img src="http://www.repostatus.org/badges/0.9.9/unsupported.svg" alt="Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired." /></a>
