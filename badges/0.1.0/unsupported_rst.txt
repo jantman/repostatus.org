@@ -1,3 +1,3 @@
-.. image:: http://www.repostatus.org/badges/0.1.0/unsupported.svg
+.. image:: https://www.repostatus.org/badges/0.1.0/unsupported.svg
    :alt: Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.
-   :target: http://www.repostatus.org/#unsupported
+   :target: https://www.repostatus.org/#unsupported
