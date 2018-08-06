@@ -1,30 +1,30 @@
 {
   "abandoned": {
     "description": "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.", 
-    "url": "https://www.repostatus.org/badges/0.1.0/abandoned.svg"
+    "url": "http://www.repostatus.org/badges/0.1.0/abandoned.svg"
   }, 
   "active": {
     "description": "The project has reached a stable, usable state and is being actively developed.", 
-    "url": "https://www.repostatus.org/badges/0.1.0/active.svg"
+    "url": "http://www.repostatus.org/badges/0.1.0/active.svg"
   }, 
   "concept": {
     "description": "Minimal or no implementation has been done yet.", 
-    "url": "https://www.repostatus.org/badges/0.1.0/concept.svg"
+    "url": "http://www.repostatus.org/badges/0.1.0/concept.svg"
   }, 
   "inactive": {
     "description": "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.", 
-    "url": "https://www.repostatus.org/badges/0.1.0/inactive.svg"
+    "url": "http://www.repostatus.org/badges/0.1.0/inactive.svg"
   }, 
   "suspended": {
     "description": "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.", 
-    "url": "https://www.repostatus.org/badges/0.1.0/suspended.svg"
+    "url": "http://www.repostatus.org/badges/0.1.0/suspended.svg"
   }, 
   "unsupported": {
     "description": "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.", 
-    "url": "https://www.repostatus.org/badges/0.1.0/unsupported.svg"
+    "url": "http://www.repostatus.org/badges/0.1.0/unsupported.svg"
   }, 
   "wip": {
     "description": "Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.", 
-    "url": "https://www.repostatus.org/badges/0.1.0/wip.svg"
+    "url": "http://www.repostatus.org/badges/0.1.0/wip.svg"
   }
 }

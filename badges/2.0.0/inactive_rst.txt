@@ -1,3 +1,3 @@
-.. image:: https://www.repostatus.org/badges/2.0.0/inactive.svg
+.. image:: http://www.repostatus.org/badges/2.0.0/inactive.svg
    :alt: Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.
-   :target: https://www.repostatus.org/#inactive
+   :target: http://www.repostatus.org/#inactive

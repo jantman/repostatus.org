@@ -85,7 +85,7 @@ def _make_badge_markup(badge_name, display_name, description, url, savedir):
         statuscap=display_name,
         moved=moved
     )
-    target = "https://www.repostatus.org/#{status}".format(status=badge_name)
+    target = "http://www.repostatus.org/#{status}".format(status=badge_name)
     with open(os.path.join(savedir, '{n}_md.txt'.format(n=badge_name)), 'w') as fh:
         fh.write(_format_md(url, target, alt, moved_to))
     with open(os.path.join(savedir, '{n}_html.txt'.format(n=badge_name)), 'w') as fh:
@@ -143,7 +143,7 @@ def make_badges():
     for name in badge_info:
         badge_data[name] = {
             'description': badge_info[name]['description'],
-            'url': 'https://www.repostatus.org/badges/latest/{name}.svg'.format(name=name),
+            'url': 'http://www.repostatus.org/badges/latest/{name}.svg'.format(name=name),
             'display_name': badge_info[name]['display_name'],
         }
     with open('badges/latest/badges.json', 'w') as fh:

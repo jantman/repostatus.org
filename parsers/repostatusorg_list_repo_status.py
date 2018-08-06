@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-This is an example parser for the <https://www.repostatus.org/> specification.
+This is an example parser for the <http://www.repostatus.org/> specification.
 It checks a single project/repository on disk, or a directory containing multiple
 projects, and reports the status(es).
 
