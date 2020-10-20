@@ -1,6 +1,11 @@
 repostatus.org API/specification changelog
 ===========================================
 
+2.1.0 (2020-10-20)
+------------------
+
+- Change text colour of "Concept" badge to dark grey for better contrast [Issue #31](https://github.com/jantman/repostatus.org/issues/31).
+
 2.0.0 (2017-05-17)
 ------------------
 
