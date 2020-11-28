@@ -1,6 +1,11 @@
 repostatus.org API/specification changelog
 ===========================================
 
+2.1.0 (2020-11-28)
+------------------
+
+- Rebuild badges from shields.io; fixes [Issue #31](https://github.com/jantman/repostatus.org/issues/31) to increase contrast of "Concept" badge.
+
 2.0.0 (2017-05-17)
 ------------------
 
