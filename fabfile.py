@@ -2,17 +2,17 @@
 """
 Repostatus.org fabfile – this is used to build badges and push to GitHub Pages.
 
-Requires Python (only tested with 2.7), Fabric and ghp-import.
+Requires Python (tested with 3.8), Fabric and ghp-import.
 
 requirements (and tested versions):
 
-Fabric==1.8.1
+Fabric==2.5.0
 ghp-import==0.4.0
 requests==2.7.0
 
 """
 
-from fabric.api import local
+from fabric import task
 import os
 import re
 import requests
@@ -135,7 +135,8 @@ def _format_html(url, target, alt, moved_to=None):
     )
     return s
 
-def make_badges():
+@task
+def make_badges(c):
     """ Regenerate the badges into badges/latest """
     if not os.path.exists('badges/latest'):
         os.makedirs('badges/latest')
@@ -154,7 +155,8 @@ def make_badges():
         _make_badge_markup(name, _dict['display_name'], _dict['description'], badge_data[name]['url'], 'badges/latest')
     print("badge images and markup written to badges/latest")
 
-def version_badges(ver):
+@task
+def version_badges(c, ver):
     """Copy the latest badges into a versioned directory; update related files"""
     if not re.match(r'\d+\.\d+\.\d+', ver):
         raise SystemExit("Error: %s does not appear to be an x.y.z semver version" % ver)
@@ -182,22 +184,24 @@ def version_badges(ver):
     with open('badges/%s/badges.json' % ver, 'w') as fh:
         fh.write(content)
 
-def badges2pages():
+@task
+def badges2pages(c):
     """Copy badges/ to gh_pages/badges/"""
     shutil.rmtree('gh_pages/badges')
     shutil.copytree('badges', 'gh_pages/badges')
 
-def publish():
+@task
+def publish(c):
     """Regenerate and publish to GitHub Pages"""
-    x = local('git branch', capture=True)
+    x = c.run('git branch')
     if '* master' not in x.stdout:
         print("ERROR: publish must be run from the master branch")
         raise SystemExit(1)
-    x = local('git status', capture=True)
+    x = c.run('git status')
     if (('Your branch is up-to-date with' not in x.stdout and
                 'HEAD detached at' not in x.stdout) or
                 'nothing to commit' not in x.stdout):
         print("ERROR: Your local git clone is dirty or not pushed to origin.")
         raise SystemExit(1)
-    local("ghp-import gh_pages")
+    c.run("ghp-import gh_pages")
     print("Changes pushed into gh-pages branch; please verify that branch and then push it to origin to deploy.")
