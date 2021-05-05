@@ -9,6 +9,11 @@
     "display_name": "Active",
     "url": "https://www.repostatus.org/badges/latest/active.svg"
   },
+  "archived": {
+    "description": "The project has been moved to a read-only state, and all work has ceased on it. It is available for cloning only.",
+    "display_name": "Archived",
+    "url": "https://www.repostatus.org/badges/latest/archived.svg"
+  },
   "concept": {
     "description": "Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.",
     "display_name": "Concept",

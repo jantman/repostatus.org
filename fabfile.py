@@ -59,6 +59,11 @@ badge_info = {
         'shield_url': 'http://img.shields.io/badge/repo%20status-Moved-red.svg',
         'description': 'The project has been moved to a new location, and the version at that location should be considered authoritative.',
         'display_name': 'Moved'
+    },
+    "archived" : {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Archived-lightgrey.svg',
+        'description': 'The project has been moved to a read-only state, and all work has ceased on it. It is available for cloning only.',
+        'display_name': 'Archived'
     }
 }
 

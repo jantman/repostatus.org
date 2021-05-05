@@ -18,6 +18,7 @@ This is accomplished by including a simple badge or URL in your project's README
 * <a name="inactive"></a>__Inactive__ – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.
 * <a name="unsupported"></a>__Unsupported__ – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.
 * <a name="moved"></a>__Moved__ - The project has been moved to a new location, and the version at that location should be considered authoritative. This status should be accompanied by a new URL.
+* <a name="archived"></a>__Archived__ - The project has been moved to a read-only state, and all work has ceased on it. It is available for cloning only.
 
 These status descriptions and the URLs to the corresponding icons are also available in a [JSON file](/badges/latest/badges.json).
 
@@ -47,6 +48,7 @@ Below are the various status icons, along with paste-able markup to add them in 
 * __Inactive__ [![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive) [markdown](javascript:showsample('inactive','md')) [ReST](javascript:showsample('inactive','rst')) [HTML](javascript:showsample('inactive','html'))
 * __Unsupported__ [![Project Status: Unsupported – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported) [markdown](javascript:showsample('unsupported','md')) [ReST](javascript:showsample('unsupported','rst')) [HTML](javascript:showsample('unsupported','html'))
 * __Moved__ [![Project Status: Moved to http://example.com – The project has been moved to a new location, and the version at that location should be considered authoritative.](https://www.repostatus.org/badges/latest/moved.svg)](https://www.repostatus.org/#moved) [markdown](javascript:showsample('moved','md')) [ReST](javascript:showsample('moved','rst')) [HTML](javascript:showsample('moved','html')) - __Note__ that there are special requirements around the formatting of this status. In the examples, replace ``http://example.com`` with the project's new URL. See [Moved Identifier String](#moved-identifier), below, for more information.
+* __Archived__ [![Project Status: Archived – The project has been moved to a read-only state, and all work has ceased on it. It is available for cloning only.](https://www.repostatus.org/badges/latest/archived.svg)](https://www.repostatus.org/#archived) [markdown](javascript:showsample('archived','md')) [ReST](javascript:showsample('archived','rst')) [HTML](javascript:showsample('archived','html'))
 
 <div id="samplewrapper" style="display: none;"><h5 id="sampletitle"></h5><div id="samplecode"></div></div>
 
