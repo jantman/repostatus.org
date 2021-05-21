@@ -24,6 +24,11 @@
     "display_name": "Moved",
     "url": "https://www.repostatus.org/badges/latest/moved.svg"
   },
+  "retired": {
+    "description": "The project has reached a stable, usable state but the author(s) have ceased all work on it likely due to the obsolescence of the code or processes therein. No new maintainer is desired.",
+    "display_name": "Retired",
+    "url": "https://www.repostatus.org/badges/latest/retired.svg"
+  },
   "suspended": {
     "description": "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.",
     "display_name": "Suspended",

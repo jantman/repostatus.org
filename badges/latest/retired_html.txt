@@ -1,0 +1,1 @@
+<a href="https://www.repostatus.org/#retired"><img src="https://www.repostatus.org/badges/latest/retired.svg" alt="Project Status: Retired – The project has reached a stable, usable state but the author(s) have ceased all work on it likely due to the obsolescence of the code or processes therein. No new maintainer is desired." /></a>

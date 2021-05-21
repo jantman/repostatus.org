@@ -55,11 +55,16 @@ badge_info = {
         'description': "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
         'display_name': 'Unsupported',
     },
-    "moved": {
+    'moved': {
         'shield_url': 'http://img.shields.io/badge/repo%20status-Moved-red.svg',
         'description': 'The project has been moved to a new location, and the version at that location should be considered authoritative.',
-        'display_name': 'Moved'
-    }
+        'display_name': 'Moved',
+    },
+    'retired': {
+        'shield_url': 'http://img.shields.io/badge/repo%20status-Retired-lightgrey.svg',
+        'description': "The project has reached a stable, usable state but the author(s) have ceased all work on it likely due to the obsolescence of the code or processes therein. No new maintainer is desired.",
+        'display_name': 'Retired'
+    },
 }
 
 def _download_media(url, fname):
