@@ -22,7 +22,7 @@ if not already present.
 Copyright
 =========
 
-Copyright 2014-2018 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
+Copyright 2014-2022 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
 Free for any use provided that patches are submitted back to me.
 
 The latest version of this script can be found at:
@@ -159,7 +159,7 @@ class RepoStatusOrg_GitHub_Checker(object):
         :rtype: 2-tuple (version, status name) or None
         """
         for f in flist:
-            content = repo.get_file_contents(f)
+            content = repo.get_contents(f)
             s = ''
             if content.encoding == 'base64':
                 s = b64decode(content.content)
@@ -187,7 +187,7 @@ class RepoStatusOrg_GitHub_Checker(object):
         :rtype: list of string filenames
         """
         files = []
-        for x in repo.get_dir_contents('/'):
+        for x in repo.get_contents('/'):
             if x.type != 'file':
                 continue
             files.append(x.name)
