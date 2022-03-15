@@ -19,7 +19,7 @@ This is accomplished by including a simple badge or URL in your project's README
 * <a name="unsupported"></a>__Unsupported__ – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.
 * <a name="moved"></a>__Moved__ - The project has been moved to a new location, and the version at that location should be considered authoritative. This status should be accompanied by a new URL.
 
-These status descriptions and the URLs to the corresponding icons are also available in a [JSON file](/badges/latest/badges.json) or in a more formal ontology using SKOS, defined in a [JSON-LD file](/badges/latest/ontology.jsonld).
+These status descriptions and the URLs to the corresponding icons are also available in a [JSON file](/badges/latest/badges.json) or in a more formal ontology using [SKOS](https://www.w3.org/TR/skos-reference/), defined in a [JSON-LD file](/badges/latest/ontology.jsonld).
 
 ### What It Looks Like
 
