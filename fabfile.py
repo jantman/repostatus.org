@@ -198,7 +198,7 @@ def publish(c):
         print("ERROR: publish must be run from the master branch")
         raise SystemExit(1)
     x = c.run('git status')
-    if (('Your branch is up-to-date with' not in x.stdout and
+    if (('Your branch is up to date with' not in x.stdout and
                 'HEAD detached at' not in x.stdout) or
                 'nothing to commit' not in x.stdout):
         print("ERROR: Your local git clone is dirty or not pushed to origin.")
