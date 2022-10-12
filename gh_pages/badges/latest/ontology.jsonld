@@ -31,7 +31,7 @@
         {
             "@id": "https://www.repostatus.org/#concept",
             "@type": "skos:Concept",
-            "skos:prefLabel": "skos:Concept",
+            "skos:prefLabel": "Concept",
             "skos:definition": "Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.",
             "skos:inScheme": "https://www.repostatus.org",
             "og:image": "https://www.repostatus.org/badges/latest/concept.svg"
