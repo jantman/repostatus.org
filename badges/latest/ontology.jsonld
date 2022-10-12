@@ -2,90 +2,80 @@
     "@context": {
         "skos": "http://www.w3.org/2004/02/skos/core#",
         "og": "http://ogp.me/ns#",
-        "dct": "http://purl.org/dc/terms/",
-        "Concept": { "@id": "skos:Concept" },
-        "ConceptScheme": { "@id": "skos:ConceptScheme" },
-        "title": { "@id": "dct:title" },
-        "description": { "@id": "dct:description" },
-        "creator": { "@id": "dct:creator" },
-        "prefLabel": { "@id": "skos:prefLabel" },
-        "altLabel": { "@id": "skos:altLabel" },
-        "definition": { "@id": "skos:definition" },
-        "inScheme": { "@id": "skos:inScheme" },
-        "image": { "@id": "og:image" }
+        "dct": "http://purl.org/dc/terms/"
     },
     "@graph": [
         {
             "@id": "https://www.repostatus.org",
-            "@type": "ConceptScheme",
-            "title": "repostatus.org",
-            "description": "A standard to easily communicate to humans and machines the development/support and usability status of software repositories/projects.",
-            "creator": "Jason Antman"
+            "@type": "skos:ConceptScheme",
+            "dct:title": "repostatus.org",
+            "dct:description": "A standard to easily communicate to humans and machines the development/support and usability status of software repositories/projects.",
+            "dct:creator": "Jason Antman"
         },
         {
             "@id": "https://www.repostatus.org/#abandoned",
-            "@type": "Concept",
-            "prefLabel": "Abandoned",
-            "definition": "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.",
-            "inScheme": "https://www.repostatus.org",
-            "image": "https://www.repostatus.org/badges/latest/abandoned.svg"
+            "@type": "skos:Concept",
+            "skos:prefLabel": "Abandoned",
+            "skos:definition": "Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.",
+            "skos:inScheme": "https://www.repostatus.org",
+            "og:image": "https://www.repostatus.org/badges/latest/abandoned.svg"
         },
         {
             "@id": "https://www.repostatus.org/#active",
-            "@type": "Concept",
-            "prefLabel": "Active",
-            "definition": "The project has reached a stable, usable state and is being actively developed.",
-            "inScheme": "https://www.repostatus.org",
-            "image": "https://www.repostatus.org/badges/latest/active.svg"
+            "@type": "skos:Concept",
+            "skos:prefLabel": "Active",
+            "skos:definition": "The project has reached a stable, usable state and is being actively developed.",
+            "skos:inScheme": "https://www.repostatus.org",
+            "og:image": "https://www.repostatus.org/badges/latest/active.svg"
         },
         {
             "@id": "https://www.repostatus.org/#concept",
-            "@type": "Concept",
-            "prefLabel": "Concept",
-            "definition": "Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.",
-            "inScheme": "https://www.repostatus.org",
-            "image": "https://www.repostatus.org/badges/latest/concept.svg"
+            "@type": "skos:Concept",
+            "skos:prefLabel": "Concept",
+            "skos:definition": "Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.",
+            "skos:inScheme": "https://www.repostatus.org",
+            "og:image": "https://www.repostatus.org/badges/latest/concept.svg"
         },
         {
             "@id": "https://www.repostatus.org/#inactive",
-            "@type": "Concept",
-            "prefLabel": "Inactive",
-            "definition": "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.",
-            "inScheme": "https://www.repostatus.org",
-            "image": "https://www.repostatus.org/badges/latest/inactive.svg"
+            "@type": "skos:Concept",
+            "skos:prefLabel": "Inactive",
+            "skos:definition": "The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.",
+            "skos:inScheme": "https://www.repostatus.org",
+            "og:image": "https://www.repostatus.org/badges/latest/inactive.svg"
         },
         {
             "@id": "https://www.repostatus.org/#moved",
-            "@type": "Concept",
-            "prefLabel": "Moved",
-            "definition": "The project has been moved to a new location, and the version at that location should be considered authoritative.",
-            "inScheme": "https://www.repostatus.org",
-            "image": "https://www.repostatus.org/badges/latest/moved.svg"
+            "@type": "skos:Concept",
+            "skos:prefLabel": "Moved",
+            "skos:definition": "The project has been moved to a new location, and the version at that location should be considered authoritative.",
+            "skos:inScheme": "https://www.repostatus.org",
+            "og:image": "https://www.repostatus.org/badges/latest/moved.svg"
         },
         {
             "@id": "https://www.repostatus.org/#suspended",
-            "@type": "Concept",
-            "prefLabel": "Suspended",
-            "definition": "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.",
-            "inScheme": "https://www.repostatus.org",
-            "image": "https://www.repostatus.org/badges/latest/suspended.svg"
+            "@type": "skos:Concept",
+            "skos:prefLabel": "Suspended",
+            "skos:definition": "Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.",
+            "skos:inScheme": "https://www.repostatus.org",
+            "og:image": "https://www.repostatus.org/badges/latest/suspended.svg"
         },
         {
             "@id": "https://www.repostatus.org/#unsupported",
-            "@type": "Concept",
-            "prefLabel": "Unsupported",
-            "definition": "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
-            "inScheme": "https://www.repostatus.org",
-            "image": "https://www.repostatus.org/badges/latest/unsupported.svg"
+            "@type": "skos:Concept",
+            "skos:prefLabel": "Unsupported",
+            "skos:definition": "The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.",
+            "skos:inScheme": "https://www.repostatus.org",
+            "og:image": "https://www.repostatus.org/badges/latest/unsupported.svg"
         },
         {
             "@id": "https://www.repostatus.org/#wip",
-            "@type": "Concept",
-            "prefLabel": "WIP",
-            "altLabel": "Work in Progress",
-            "definition": "Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.",
-            "inScheme": "https://www.repostatus.org",
-            "image": "https://www.repostatus.org/badges/latest/wip.svg"
+            "@type": "skos:Concept",
+            "skos:prefLabel": "WIP",
+            "skos:altLabel": "Work in Progress",
+            "skos:definition": "Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.",
+            "skos:inScheme": "https://www.repostatus.org",
+            "og:image": "https://www.repostatus.org/badges/latest/wip.svg"
         }
   ]
 }
