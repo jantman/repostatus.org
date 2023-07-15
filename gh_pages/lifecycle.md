@@ -25,7 +25,7 @@ All repositories start as a Concept. They are little more than an idea yet. From
 
 ### Stable repos
 
-A repository will reach a stable state as something that is actively worked on. Thus all repositories will move into the second group of states as Active. From here they might become Inactive or Unsupported. Contrary to the unstable states it is totally feasable for a repository to move from any stable state into any other stable state.
+A repository will reach a stable state as something that is actively worked on. Thus all repositories will move into the second group of states as Active. From here they might become Inactive or Unsupported. Contrary to the unstable states it is totally feasible for a repository to move from any stable state into any other stable state.
 
 ### Moved
 
@@ -33,6 +33,6 @@ A special case is the *Moved* state for repositories. Any repository can move to
 
 ## Real life application
 
-Understanbly many repositories will not strictly follow the lifecycle outlined here. When a few commits move a repo from *Suspended* to *Active* it is understandable that maintners might not want to make another commit just to move it to *WIP*.
+Understandably many repositories will not strictly follow the lifecycle outlined here. When a few commits move a repo from *Suspended* to *Active* it is understandable that maintainers might not want to make another commit just to move it to *WIP*.
 
 We fully understand that states as outlined here will be skipped. Therefore the lifecycle hopes to outline a way of thinking about the status of a repository and help choose an appropriate status.
