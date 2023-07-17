@@ -34,7 +34,7 @@ On a directory containing multiple git clones, some of which have the identifier
 Copyright
 =========
 
-Copyright 2014 Jason Antman <jason@jasonantman.com> <http://www.jasonantman.com>
+Copyright 2014 Jason Antman <jason@jasonantman.com> <https://www.jasonantman.com>
 Free for any use provided that patches are submitted back to me.
 
 The latest version of this script can be found at:
